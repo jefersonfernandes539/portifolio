@@ -1,3 +1,1 @@
-import * as Spinner from "./Spinner/SplashLoading";
-
-export { Spinner };
+export { Spinner as Base } from "./Spinner/Base";

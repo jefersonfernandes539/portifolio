@@ -1,6 +1,6 @@
 "use client";
 
-import { Spinner } from "@/components";
+import { Spinner } from "@/components/Spinner/Base";
 import { ThemeProvider } from "@/components/theme-provider";
 import { useLoading } from "@/stores/loading";
 import { Toaster as Sonner } from "@/ui/sonner";
@@ -18,7 +18,7 @@ export function Providers({ children }: { children: React.ReactNode }) {
 
   return (
     <>
-      {loading ? <Spinner.Base classname="hidden" /> : null}
+      {loading ? <Spinner /> : null}
       <SWRConfig value={{ revalidateOnFocus: false, suspense: false }}>
         <ThemeProvider
           attribute="class"
