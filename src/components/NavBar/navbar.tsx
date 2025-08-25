@@ -36,8 +36,13 @@ export default function Navbar() {
   const scrollToSection = (sectionId: string) => {
     setActiveSection(sectionId);
     setIsOpen(false);
-    const element = document.getElementById(sectionId);
-    if (element) element.scrollIntoView({ behavior: "smooth" });
+
+    setTimeout(() => {
+      const element = document.getElementById(sectionId);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+    }, 300);
   };
 
   return (
@@ -144,15 +149,16 @@ export default function Navbar() {
                     </motion.button>
                   );
                 })}
-
-                <div className="pt-4 border-t border-gray-200 dark:border-gray-700 flex flex-col space-y-2">
+                <div className="pt-4 border-t border-gray-200 dark:border-gray-700 flex space-y-3">
                   <Button
                     onClick={() => scrollToSection("contact")}
-                    className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 w-full flex items-center justify-center"
+                    className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 flex items-center justify-center"
                   >
                     <ExternalLink className="w-4 h-4 mr-2" />
                     Contratar
                   </Button>
+
+                  <Toggle.Color />
                 </div>
               </div>
             </motion.div>

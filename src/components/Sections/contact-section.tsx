@@ -79,7 +79,7 @@ export function ContactSection() {
 
   return (
     <section id="contact" className="py-20">
-      <div className="container mx-auto px-4">
+      <div className="max-w-7xl w-full mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -91,13 +91,14 @@ export function ContactSection() {
             Entre em Contato
           </h2>
           <div className="w-20 h-1 bg-blue-600 mx-auto mb-8"></div>
-          <p className="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+          <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
             Tem um projeto em mente ou quer conversar sobre oportunidades de
             trabalho? Ficarei feliz em responder suas perguntas.
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 gap-y-10">
+          {/* Info */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -122,7 +123,7 @@ export function ContactSection() {
                       </h3>
                       <a
                         href={info.link}
-                        className="text-gray-600 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400 transition-colors"
+                        className="text-gray-600 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400 transition-colors break-words"
                         target="_blank"
                         rel="noopener noreferrer"
                       >
@@ -135,6 +136,7 @@ export function ContactSection() {
             })}
           </motion.div>
 
+          {/* Form */}
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -153,6 +155,7 @@ export function ContactSection() {
                       <Input
                         id="name"
                         name="name"
+                        className="w-full"
                         placeholder="Seu nome"
                         required
                         value={formData.name}
@@ -167,6 +170,7 @@ export function ContactSection() {
                         id="email"
                         name="email"
                         type="email"
+                        className="w-full"
                         placeholder="seu.email@exemplo.com"
                         required
                         value={formData.email}
@@ -182,6 +186,7 @@ export function ContactSection() {
                     <Input
                       id="title"
                       name="title"
+                      className="w-full"
                       placeholder="Assunto da mensagem"
                       required
                       value={formData.title}
@@ -196,6 +201,7 @@ export function ContactSection() {
                     <Textarea
                       id="message"
                       name="message"
+                      className="w-full"
                       placeholder="Sua mensagem aqui..."
                       rows={6}
                       required

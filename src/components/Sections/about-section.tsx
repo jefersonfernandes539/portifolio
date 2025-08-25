@@ -80,7 +80,7 @@ export function AboutSection() {
 
   return (
     <section id="about" className="py-20 bg-gray-100 dark:bg-gray-900">
-      <div className="container mx-auto px-4">
+      <div className="mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -88,22 +88,53 @@ export function AboutSection() {
           transition={{ duration: 0.5 }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-600 dark:text-gray-200">
-            Sobre Mim
-          </h2>
-          <div className="w-20 h-1 bg-blue-600 dark:bg-blue-400 mx-auto mb-8"></div>
-          <p className="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-            Sou Desenvolvedor FullStack com 2 anos de experiência, especializado
-            em React, Next.js, TypeScript, .NET e Entity Framework. Atuo no
-            desenvolvimento de aplicações completas, desde a camada de interface
-            até a lógica de negócio e integração com bancos de dados. Já
-            participei de projetos em empresas privadas e iniciativas públicas,
-            como o Cartografia da Cultura & Rede Mobiliza, sempre focando em
-            entregar soluções digitais eficientes, escaláveis e com uma boa
-            experiência para o usuário. Atualmente, curso o 5º semestre de
-            Análise e Desenvolvimento de Sistemas e sigo em constante evolução
-            profissional.
-          </p>
+          {" "}
+          <div className="max-w-3xl mx-auto px-6">
+            <h2 className="text-3xl font-bold text-center text-gray-800 dark:text-gray-100 mb-8">
+              Sobre Mim
+            </h2>
+
+            <div className="space-y-6 text-gray-600 dark:text-gray-300 text-lg leading-relaxed text-justify">
+              <p>
+                Sou{" "}
+                <span className="font-semibold">Desenvolvedor FullStack</span>{" "}
+                com
+                <span className="font-semibold"> 2 anos de experiência</span>,
+                especializado em{" "}
+                <span>
+                  Javascript, Typescript, React, Next.js, C#, .NET e Entity
+                  Framework
+                </span>
+                .
+              </p>
+
+              <p>
+                Atuo no desenvolvimento de aplicações completas, desde a camada
+                de interface até a lógica de negócio e integração com bancos de
+                dados.
+              </p>
+
+              <p>
+                Já participei de projetos em{" "}
+                <span className="font-semibold">empresas privadas</span> e{" "}
+                <span className="font-semibold">iniciativas públicas</span>,
+                como o{" "}
+                <span className="italic">
+                  Cartografia da Cultura & Rede Mobilize
+                </span>
+                , sempre focando em entregar soluções digitais eficientes,
+                escaláveis e com excelente experiência para o usuário.
+              </p>
+
+              <p>
+                Atualmente, curso o{" "}
+                <span className="font-semibold">
+                  5º semestre de Análise e Desenvolvimento de Sistemas
+                </span>{" "}
+                e sigo em constante evolução profissional.
+              </p>
+            </div>
+          </div>
         </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
