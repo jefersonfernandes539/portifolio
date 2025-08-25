@@ -1,1 +1,3 @@
-export { Spinner as Base } from "./Spinner/Base";
+import * as Toggle from "./Toggle";
+
+export { Toggle };

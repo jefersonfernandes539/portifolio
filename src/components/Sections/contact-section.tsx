@@ -1,7 +1,6 @@
 "use client";
 
 import type React from "react";
-
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Mail, MapPin, Phone, Send } from "lucide-react";
@@ -10,14 +9,14 @@ import { Card, CardContent } from "@/ui/card";
 import { Input } from "@/ui/input";
 import { Label } from "@/ui/label";
 import { Textarea } from "@/ui/textarea";
-import { Toast } from "@/ui/toast";
+import emailjs from "emailjs-com";
 
 export function ContactSection() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    subject: "",
+    title: "",
     message: "",
   });
 
@@ -32,28 +31,37 @@ export function ContactSection() {
     e.preventDefault();
     setIsSubmitting(true);
 
-    await new Promise((resolve) => setTimeout(resolve, 1500));
+    try {
+      await emailjs.send(
+        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
+        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!,
+        {
+          name: formData.name,
+          email: formData.email,
+          title: formData.title,
+          message: formData.message,
+          time: new Date().toLocaleString("pt-BR"),
+        },
+        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!
+      );
 
-    Toast({
-      title: "Mensagem enviada!",
-    });
+      setFormData({ name: "", email: "", title: "", message: "" });
 
-    setFormData({
-      name: "",
-      email: "",
-      subject: "",
-      message: "",
-    });
-
-    setIsSubmitting(false);
+      alert("Mensagem enviada com sucesso!");
+    } catch (err) {
+      console.error("Erro ao enviar email:", err);
+      alert("Erro ao enviar mensagem. Tente novamente.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const contactInfo = [
     {
       icon: Mail,
       title: "Email",
-      value: "contato@joaosilva.dev",
-      link: "mailto:contato@joaosilva.dev",
+      value: "fernandesjeferson539@gmail.com",
+      link: "mailto:fernandesjeferson539@gmail.com",
     },
     {
       icon: Phone,
@@ -65,12 +73,12 @@ export function ContactSection() {
       icon: MapPin,
       title: "Localização",
       value: "Fortaleza, CE - Brasil",
-      link: "https://maps.google.com/?q=São+Paulo",
+      link: "https://www.google.com/maps/place/Fortaleza+-+CE/@-3.793299,-38.6844283,11z",
     },
   ];
 
   return (
-    <section id="contact" className="py-20 bg-white">
+    <section id="contact" className="py-20">
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -79,11 +87,11 @@ export function ContactSection() {
           transition={{ duration: 0.5 }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-600">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-600 dark:text-gray-200">
             Entre em Contato
           </h2>
           <div className="w-20 h-1 bg-blue-600 mx-auto mb-8"></div>
-          <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+          <p className="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
             Tem um projeto em mente ou quer conversar sobre oportunidades de
             trabalho? Ficarei feliz em responder suas perguntas.
           </p>
@@ -100,16 +108,21 @@ export function ContactSection() {
             {contactInfo.map((info, index) => {
               const Icon = info.icon;
               return (
-                <Card key={index} className="overflow-hidden">
+                <Card
+                  key={index}
+                  className="overflow-hidden bg-gray-50 dark:bg-gray-800"
+                >
                   <CardContent className="p-6 flex items-start space-x-4">
-                    <div className="bg-blue-100 p-3 rounded-lg">
-                      <Icon className="h-6 w-6 text-blue-600" />
+                    <div className="bg-blue-100 dark:bg-blue-900 p-3 rounded-lg">
+                      <Icon className="h-6 w-6 text-blue-600 dark:text-blue-400" />
                     </div>
                     <div>
-                      <h3 className="font-bold text-lg mb-1">{info.title}</h3>
+                      <h3 className="font-bold text-lg mb-1 dark:text-gray-100">
+                        {info.title}
+                      </h3>
                       <a
                         href={info.link}
-                        className="text-gray-600 hover:text-blue-600 transition-colors"
+                        className="text-gray-600 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400 transition-colors"
                         target="_blank"
                         rel="noopener noreferrer"
                       >
@@ -120,108 +133,8 @@ export function ContactSection() {
                 </Card>
               );
             })}
-
-            <Card className="overflow-hidden">
-              <CardContent className="p-6">
-                <h3 className="font-bold text-lg mb-4">Redes Sociais</h3>
-                <div className="flex space-x-4">
-                  <a
-                    href="https://github.com"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="bg-gray-800 p-2 rounded-full text-white hover:bg-gray-700 transition-colors"
-                  >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="20"
-                      height="20"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    >
-                      <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
-                    </svg>
-                  </a>
-                  <a
-                    href="https://linkedin.com"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="bg-blue-600 p-2 rounded-full text-white hover:bg-blue-700 transition-colors"
-                  >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="20"
-                      height="20"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    >
-                      <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
-                      <rect x="2" y="9" width="4" height="12"></rect>
-                      <circle cx="4" cy="4" r="2"></circle>
-                    </svg>
-                  </a>
-                  <a
-                    href="https://twitter.com"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="bg-blue-400 p-2 rounded-full text-white hover:bg-blue-500 transition-colors"
-                  >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="20"
-                      height="20"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    >
-                      <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
-                    </svg>
-                  </a>
-                  <a
-                    href="https://instagram.com"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="bg-pink-600 p-2 rounded-full text-white hover:bg-pink-700 transition-colors"
-                  >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="20"
-                      height="20"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    >
-                      <rect
-                        x="2"
-                        y="2"
-                        width="20"
-                        height="20"
-                        rx="5"
-                        ry="5"
-                      ></rect>
-                      <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-                      <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
-                    </svg>
-                  </a>
-                </div>
-              </CardContent>
-            </Card>
           </motion.div>
 
-          {/* Contact Form */}
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -229,12 +142,14 @@ export function ContactSection() {
             transition={{ duration: 0.5 }}
             className="lg:col-span-2"
           >
-            <Card>
+            <Card className="bg-gray-50 dark:bg-gray-800">
               <CardContent className="p-6">
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div className="space-y-2">
-                      <Label htmlFor="name">Nome</Label>
+                      <Label htmlFor="name" className="dark:text-gray-200">
+                        Nome
+                      </Label>
                       <Input
                         id="name"
                         name="name"
@@ -245,7 +160,9 @@ export function ContactSection() {
                       />
                     </div>
                     <div className="space-y-2">
-                      <Label htmlFor="email">Email</Label>
+                      <Label htmlFor="email" className="dark:text-gray-200">
+                        Email
+                      </Label>
                       <Input
                         id="email"
                         name="email"
@@ -259,19 +176,23 @@ export function ContactSection() {
                   </div>
 
                   <div className="space-y-2">
-                    <Label htmlFor="subject">Assunto</Label>
+                    <Label htmlFor="title" className="dark:text-gray-200">
+                      Assunto
+                    </Label>
                     <Input
-                      id="subject"
-                      name="subject"
+                      id="title"
+                      name="title"
                       placeholder="Assunto da mensagem"
                       required
-                      value={formData.subject}
+                      value={formData.title}
                       onChange={handleChange}
                     />
                   </div>
 
                   <div className="space-y-2">
-                    <Label htmlFor="message">Mensagem</Label>
+                    <Label htmlFor="message" className="dark:text-gray-200">
+                      Mensagem
+                    </Label>
                     <Textarea
                       id="message"
                       name="message"

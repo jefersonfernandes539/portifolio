@@ -14,6 +14,7 @@ import {
   CardTitle,
 } from "@/ui/card";
 import { Tabs, TabsList, TabsTrigger } from "@/ui/tabs";
+import Image from "next/image";
 
 export function ProjectsSection() {
   const [activeTab, setActiveTab] = useState("all");
@@ -21,69 +22,23 @@ export function ProjectsSection() {
   const projects = [
     {
       id: 1,
-      title: "E-commerce Platform",
+      title:
+        "Cartografia da Cultura: OSCs e Iniciativas Culturais de Fortaleza",
       description:
-        "Uma plataforma de e-commerce completa com painel administrativo e gateway de pagamento.",
-      image: "/placeholder.svg?height=200&width=400",
-      tags: ["React", "Node.js", "MongoDB", "Stripe"],
+        "O **Cartografia da Cultura** é uma iniciativa que tem como objetivo **mapear, documentar e dar visibilidade** a mais de 100 organizações e coletivos culturais de Fortaleza. A proposta busca fortalecer redes de colaboração, valorizar metodologias e práticas culturais e reunir essas experiências em uma **plataforma digital interativa** e em um **livro acessível**, ambos construídos de forma democrática e inclusiva.",
+      image: "/img1.png",
+      tags: [
+        "React",
+        "Nextjs",
+        "Typescript",
+        "ShadCN",
+        "C#",
+        "Postgresql",
+        "EF ORM",
+      ],
       category: "fullstack",
-      githubUrl: "https://github.com",
-      liveUrl: "https://example.com",
-    },
-    {
-      id: 2,
-      title: "Dashboard Analytics",
-      description:
-        "Dashboard interativo para visualização de dados e métricas de negócios.",
-      image: "/placeholder.svg?height=200&width=400",
-      tags: ["Next.js", "TypeScript", "Chart.js", "Tailwind"],
-      category: "frontend",
-      githubUrl: "https://github.com",
-      liveUrl: "https://example.com",
-    },
-    {
-      id: 3,
-      title: "API de Gestão de Tarefas",
-      description:
-        "API RESTful para gerenciamento de tarefas e projetos com autenticação JWT.",
-      image: "/placeholder.svg?height=200&width=400",
-      tags: ["Node.js", "Express", "PostgreSQL", "JWT"],
-      category: "backend",
-      githubUrl: "https://github.com",
-      liveUrl: "https://example.com",
-    },
-    {
-      id: 4,
-      title: "App de Finanças Pessoais",
-      description:
-        "Aplicativo para controle de finanças pessoais com gráficos e relatórios.",
-      image: "/placeholder.svg?height=200&width=400",
-      tags: ["React Native", "Firebase", "Redux", "Expo"],
-      category: "mobile",
-      githubUrl: "https://github.com",
-      liveUrl: "https://example.com",
-    },
-    {
-      id: 5,
-      title: "Landing Page Corporativa",
-      description:
-        "Landing page moderna e responsiva para empresa de tecnologia.",
-      image: "/placeholder.svg?height=200&width=400",
-      tags: ["HTML", "CSS", "JavaScript", "GSAP"],
-      category: "frontend",
-      githubUrl: "https://github.com",
-      liveUrl: "https://example.com",
-    },
-    {
-      id: 6,
-      title: "Sistema de Gerenciamento de Conteúdo",
-      description:
-        "CMS personalizado com editor WYSIWYG e sistema de permissões.",
-      image: "/placeholder.svg?height=200&width=400",
-      tags: ["React", "Node.js", "MySQL", "AWS"],
-      category: "fullstack",
-      githubUrl: "https://github.com",
-      liveUrl: "https://example.com",
+      githubUrl: "https://github.com/jefersonfernandes539/OscFrontend",
+      liveUrl: "https://redemobilize.up.railway.app/",
     },
   ];
 
@@ -101,7 +56,7 @@ export function ProjectsSection() {
   ];
 
   return (
-    <section id="projects" className="py-20 bg-white">
+    <section id="projects" className="py-20 bg-white dark:bg-gray-900">
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -110,11 +65,11 @@ export function ProjectsSection() {
           transition={{ duration: 0.5 }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-600">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-600 dark:text-gray-200">
             Meus Projetos
           </h2>
-          <div className="w-20 h-1 bg-blue-600 mx-auto mb-8"></div>
-          <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+          <div className="w-20 h-1 bg-blue-600 dark:bg-blue-400 mx-auto mb-8"></div>
+          <p className="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
             Confira alguns dos meus trabalhos recentes. Cada projeto é uma
             oportunidade de aprendizado e crescimento profissional.
           </p>
@@ -153,22 +108,28 @@ export function ProjectsSection() {
               whileHover={{ y: -5 }}
               className="h-full"
             >
-              <Card className="overflow-hidden h-full flex flex-col">
+              <Card className="overflow-hidden h-full flex flex-col bg-gray-200 dark:bg-gray-800">
                 <div className="relative overflow-hidden">
-                  <img
+                  <Image
                     src={project.image || "/placeholder.svg"}
                     alt={project.title}
+                    width={500}
+                    height={192}
                     className="w-full h-48 object-cover transition-transform duration-300 hover:scale-105"
+                    style={{ width: "100%", height: "12rem" }}
+                    unoptimized={project.image?.startsWith("http")}
                   />
                 </div>
                 <CardHeader>
-                  <CardTitle>{project.title}</CardTitle>
+                  <CardTitle className="dark:text-gray-100">
+                    {project.title}
+                  </CardTitle>
                   <div className="flex flex-wrap gap-2 mt-2">
                     {project.tags.map((tag, i) => (
                       <Badge
                         key={i}
                         variant="secondary"
-                        className="bg-blue-100 text-blue-700 hover:bg-blue-200"
+                        className="bg-blue-100 text-blue-700 dark:bg-blue-800 dark:text-blue-300 hover:bg-blue-200 dark:hover:bg-blue-700"
                       >
                         {tag}
                       </Badge>
@@ -176,7 +137,7 @@ export function ProjectsSection() {
                   </div>
                 </CardHeader>
                 <CardContent>
-                  <CardDescription className="text-gray-600">
+                  <CardDescription className="text-gray-600 dark:text-gray-300">
                     {project.description}
                   </CardDescription>
                 </CardContent>

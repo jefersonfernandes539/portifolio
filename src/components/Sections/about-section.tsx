@@ -20,12 +20,12 @@ import { Progress } from "@/ui/progress";
 
 export function AboutSection() {
   const skills = [
-    { name: "JavaScript/TypeScript", progress: 90 },
-    { name: "React & Next.js", progress: 85 },
-    { name: "Node.js", progress: 80 },
-    { name: "HTML & CSS", progress: 95 },
-    { name: "UI/UX Design", progress: 75 },
-    { name: "Database Management", progress: 70 },
+    { name: "JavaScript/TypeScript", progress: 100 },
+    { name: "React & Next.js", progress: 100 },
+    { name: "Node.js", progress: 100 },
+    { name: "HTML & CSS", progress: 100 },
+    { name: "UI/UX Design", progress: 80 },
+    { name: "Database Management", progress: 90 },
   ];
 
   const services = [
@@ -79,7 +79,7 @@ export function AboutSection() {
   };
 
   return (
-    <section id="about" className="py-20 bg-gray-100">
+    <section id="about" className="py-20 bg-gray-100 dark:bg-gray-900">
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -88,15 +88,21 @@ export function AboutSection() {
           transition={{ duration: 0.5 }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-600">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-600 dark:text-gray-200">
             Sobre Mim
           </h2>
-          <div className="w-20 h-1 bg-blue-600 mx-auto mb-8"></div>
-          <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-            Sou um desenvolvedor full stack apaixonado por criar soluções
-            digitais elegantes e funcionais. Com mais de 5 anos de experiência,
-            tenho trabalhado com diversas tecnologias e frameworks para entregar
-            produtos de alta qualidade.
+          <div className="w-20 h-1 bg-blue-600 dark:bg-blue-400 mx-auto mb-8"></div>
+          <p className="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+            Sou Desenvolvedor FullStack com 2 anos de experiência, especializado
+            em React, Next.js, TypeScript, .NET e Entity Framework. Atuo no
+            desenvolvimento de aplicações completas, desde a camada de interface
+            até a lógica de negócio e integração com bancos de dados. Já
+            participei de projetos em empresas privadas e iniciativas públicas,
+            como o Cartografia da Cultura & Rede Mobiliza, sempre focando em
+            entregar soluções digitais eficientes, escaláveis e com uma boa
+            experiência para o usuário. Atualmente, curso o 5º semestre de
+            Análise e Desenvolvimento de Sistemas e sigo em constante evolução
+            profissional.
           </p>
         </motion.div>
 
@@ -107,46 +113,63 @@ export function AboutSection() {
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
-            <h3 className="text-2xl font-bold mb-6">Quem sou eu</h3>
-            <div className="space-y-4 text-gray-600">
+            <h3 className="text-2xl font-bold mb-6 text-gray-800 dark:text-gray-100">
+              Quem sou eu
+            </h3>
+            <div className="space-y-4 text-gray-600 dark:text-gray-300">
               <p>
-                Olá! Sou Jeferson Fernandes, um desenvolvedor full stack. Minha
-                jornada na programação começou há mais de 5 anos, e desde então
-                venho construindo aplicações web modernas e intuitivas.
+                Olá! Sou Jeferson Fernandes, um desenvolvedor full stack
+                apaixonado por tecnologia. Minha jornada começou há alguns anos
+                com curiosidade em programação, e desde então venho evoluindo
+                para construir aplicações web modernas e funcionais.
               </p>
               <p>
-                Formado em Análise e desenvolvimento de Sistemas, tenho me
-                especializado em tecnologias como React, Next.js, Node.js,
-                DotNet e bancos de dados SQL e NoSQL.
+                Atualmente curso o 5º semestre de Análise e Desenvolvimento de
+                Sistemas e já atuei em projetos que utilizam tecnologias como
+                React, Next.js, TypeScript, .NET, Entity Framework e bancos de
+                dados relacionais.
               </p>
               <p>
-                Minha abordagem combina habilidades técnicas sólidas com um
-                olhar atento para design e experiência do usuário. Acredito que
-                o melhor software não é apenas funcional, mas também agradável
-                de usar.
+                Tenho como foco unir performance, usabilidade e boas práticas de
+                desenvolvimento para entregar soluções que realmente façam
+                diferença para empresas e usuários.
               </p>
               <p>
-                Quando não estou codando, gosto de contribuir para projetos open
-                source, escrever artigos técnicos e participar de eventos da
-                comunidade de desenvolvimento.
+                Fora do mundo do código, gosto de aprender coisas novas,
+                compartilhar conhecimento e participar de iniciativas que
+                fortalecem a comunidade de tecnologia.
               </p>
             </div>
 
             <div className="mt-8 grid grid-cols-2 gap-4">
               <div>
-                <h4 className="font-bold mb-2">Nome:</h4>
-                <p className="text-gray-600">Jeferson Fernandes</p>
+                <h4 className="font-bold mb-2 text-gray-800 dark:text-gray-100">
+                  Nome:
+                </h4>
+                <p className="text-gray-600 dark:text-gray-300">
+                  Jeferson Fernandes
+                </p>
               </div>
               <div>
-                <h4 className="font-bold mb-2">Email:</h4>
-                <p className="text-gray-600">fernandesjeferson539@gmail.com</p>
+                <h4 className="font-bold mb-2 text-gray-800 dark:text-gray-100">
+                  Email:
+                </h4>
+                <p className="text-gray-600 dark:text-gray-300">
+                  fernandesjeferson539@gmail.com
+                </p>
               </div>
               <div>
-                <h4 className="font-bold mb-2">Localização:</h4>
-                <p className="text-gray-600">Fortaleza, Ceará</p>
+                <h4 className="font-bold mb-2 text-gray-800 dark:text-gray-100">
+                  Localização:
+                </h4>
+                <p className="text-gray-600 dark:text-gray-300">
+                  Fortaleza, Ceará
+                </p>
               </div>
               <div>
-                <h4 className="font-bold mb-2">Disponibilidade:</h4>
+                <h4 className="font-bold mb-2 text-gray-800 dark:text-gray-100">
+                  Disponibilidade:
+                </h4>
                 <p className="text-green-600 font-medium">
                   Disponível para projetos
                 </p>
@@ -160,13 +183,17 @@ export function AboutSection() {
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
-            <h3 className="text-2xl font-bold mb-6">Minhas Habilidades</h3>
+            <h3 className="text-2xl font-bold mb-6 text-gray-800 dark:text-gray-100">
+              Minhas Habilidades
+            </h3>
             <div className="space-y-6">
               {skills.map((skill, index) => (
                 <div key={index} className="space-y-2">
                   <div className="flex justify-between">
                     <span className="font-medium">{skill.name}</span>
-                    <span className="text-blue-600">{skill.progress}%</span>
+                    <span className="text-blue-600 dark:text-blue-400">
+                      {skill.progress}%
+                    </span>
                   </div>
                   <Progress value={skill.progress} className="h-2" />
                 </div>
@@ -182,7 +209,7 @@ export function AboutSection() {
           transition={{ duration: 0.5 }}
           className="mt-20"
         >
-          <h3 className="text-2xl font-bold mb-10 text-center">
+          <h3 className="text-2xl font-bold mb-10 text-center text-gray-800 dark:text-gray-100">
             Serviços Oferecidos
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -197,13 +224,17 @@ export function AboutSection() {
                   whileInView="visible"
                   viewport={{ once: true }}
                 >
-                  <Card className="h-full hover:shadow-lg transition-shadow">
+                  <Card className="h-full hover:shadow-lg transition-shadow bg-white dark:bg-gray-800">
                     <CardHeader>
-                      <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
-                        <Icon className="h-6 w-6 text-blue-600" />
+                      <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900 rounded-lg flex items-center justify-center mb-4">
+                        <Icon className="h-6 w-6 text-blue-600 dark:text-blue-400" />
                       </div>
-                      <CardTitle>{service.title}</CardTitle>
-                      <CardDescription>{service.description}</CardDescription>
+                      <CardTitle className="dark:text-gray-100">
+                        {service.title}
+                      </CardTitle>
+                      <CardDescription className="dark:text-gray-300">
+                        {service.description}
+                      </CardDescription>
                     </CardHeader>
                     <CardContent></CardContent>
                   </Card>

@@ -5,18 +5,15 @@ import { motion, AnimatePresence } from "framer-motion";
 import {
   Menu,
   X,
-  Github,
-  Linkedin,
-  Mail,
   ExternalLink,
   Code2,
   User,
   Briefcase,
-  MessageSquare,
   Home,
 } from "lucide-react";
 import { Button } from "@/ui/button";
 import { Badge } from "@/ui/badge";
+import { Toggle } from "@/components";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -24,10 +21,7 @@ export default function Navbar() {
   const [activeSection, setActiveSection] = useState("home");
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
-    };
-
+    const handleScroll = () => setScrolled(window.scrollY > 50);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -37,23 +31,13 @@ export default function Navbar() {
     { id: "about", label: "Sobre", icon: User },
     { id: "projects", label: "Projetos", icon: Code2 },
     { id: "experience", label: "Experiência", icon: Briefcase },
-    { id: "contact", label: "Contato", icon: MessageSquare },
-  ];
-
-  const socialLinks = [
-    { icon: Github, href: "https://github.com", label: "GitHub" },
-    { icon: Linkedin, href: "https://linkedin.com", label: "LinkedIn" },
-    { icon: Mail, href: "mailto:dev@example.com", label: "Email" },
   ];
 
   const scrollToSection = (sectionId: string) => {
     setActiveSection(sectionId);
     setIsOpen(false);
-
     const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
+    if (element) element.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
@@ -63,7 +47,7 @@ export default function Navbar() {
         animate={{ y: 0 }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           scrolled
-            ? "bg-white/80 backdrop-blur-md shadow-lg border-b border-gray-200"
+            ? "bg-white/80 dark:bg-gray-900/80 backdrop-blur-md shadow-lg border-b border-gray-200 dark:border-gray-700"
             : "bg-transparent"
         }`}
       >
@@ -84,7 +68,7 @@ export default function Navbar() {
               </Badge>
             </motion.div>
 
-            <div className="hidden md:flex items-center space-x-8">
+            <div className="hidden md:flex items-center space-x-6">
               {navItems.map((item) => {
                 const Icon = item.icon;
                 return (
@@ -93,8 +77,8 @@ export default function Navbar() {
                     onClick={() => scrollToSection(item.id)}
                     className={`flex items-center space-x-1 px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
                       activeSection === item.id
-                        ? "text-blue-600 bg-blue-50"
-                        : "text-gray-700 hover:text-blue-600 hover:bg-gray-50"
+                        ? "text-blue-600 bg-blue-50 dark:text-blue-400 dark:bg-gray-800"
+                        : "text-gray-700 hover:text-blue-600 hover:bg-gray-50 dark:text-gray-300 dark:hover:text-blue-400 dark:hover:bg-gray-800"
                     }`}
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
@@ -107,31 +91,19 @@ export default function Navbar() {
             </div>
 
             <div className="hidden md:flex items-center space-x-4">
-              {socialLinks.map((social) => {
-                const Icon = social.icon;
-                return (
-                  <motion.a
-                    key={social.label}
-                    href={social.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="p-2 text-gray-600 hover:text-blue-600 transition-colors"
-                    whileHover={{ scale: 1.1 }}
-                    whileTap={{ scale: 0.9 }}
-                  >
-                    <Icon className="w-5 h-5" />
-                  </motion.a>
-                );
-              })}
-              <Button className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700">
+              <Button
+                onClick={() => scrollToSection("contact")}
+                className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700"
+              >
                 <ExternalLink className="w-4 h-4 mr-2" />
                 Contratar
               </Button>
+              <Toggle.Color />
             </div>
 
             <motion.button
               onClick={() => setIsOpen(!isOpen)}
-              className="md:hidden p-2 rounded-lg text-gray-700 hover:bg-gray-100"
+              className="md:hidden p-2 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800"
               whileTap={{ scale: 0.95 }}
             >
               {isOpen ? (
@@ -149,7 +121,7 @@ export default function Navbar() {
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
-              className="md:hidden bg-white border-t border-gray-200 shadow-lg"
+              className="md:hidden bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700 shadow-lg"
             >
               <div className="px-4 py-6 space-y-4">
                 {navItems.map((item, index) => {
@@ -160,8 +132,8 @@ export default function Navbar() {
                       onClick={() => scrollToSection(item.id)}
                       className={`flex items-center space-x-3 w-full px-4 py-3 rounded-lg text-left transition-all duration-200 ${
                         activeSection === item.id
-                          ? "text-blue-600 bg-blue-50"
-                          : "text-gray-700 hover:bg-gray-50"
+                          ? "text-blue-600 bg-blue-50 dark:text-blue-400 dark:bg-gray-800"
+                          : "text-gray-700 hover:bg-gray-50 dark:text-gray-300 dark:hover:text-blue-400 dark:hover:bg-gray-800"
                       }`}
                       initial={{ opacity: 0, x: -20 }}
                       animate={{ opacity: 1, x: 0 }}
@@ -173,31 +145,14 @@ export default function Navbar() {
                   );
                 })}
 
-                <div className="pt-4 border-t border-gray-200">
-                  <div className="flex items-center justify-between">
-                    <div className="flex space-x-4">
-                      {socialLinks.map((social) => {
-                        const Icon = social.icon;
-                        return (
-                          <motion.a
-                            key={social.label}
-                            href={social.href}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="p-2 text-gray-600 hover:text-blue-600 transition-colors"
-                            whileHover={{ scale: 1.1 }}
-                            whileTap={{ scale: 0.9 }}
-                          >
-                            <Icon className="w-5 h-5" />
-                          </motion.a>
-                        );
-                      })}
-                    </div>
-                    <Button className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700">
-                      <ExternalLink className="w-4 h-4 mr-2" />
-                      Contratar
-                    </Button>
-                  </div>
+                <div className="pt-4 border-t border-gray-200 dark:border-gray-700 flex flex-col space-y-2">
+                  <Button
+                    onClick={() => scrollToSection("contact")}
+                    className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 w-full flex items-center justify-center"
+                  >
+                    <ExternalLink className="w-4 h-4 mr-2" />
+                    Contratar
+                  </Button>
                 </div>
               </div>
             </motion.div>
