@@ -49,7 +49,6 @@ export function ContactSection() {
       );
 
       setFormData({ name: "", email: "", title: "", message: "" });
-
       alert(t("success"));
     } catch (err) {
       console.error("Erro ao enviar email:", err);
@@ -80,9 +79,62 @@ export function ContactSection() {
     },
   ];
 
+  const floatingCircles = [
+    {
+      top: "0%",
+      left: "10%",
+      bg: "bg-purple-300 dark:bg-purple-700",
+      size: "w-72 h-72",
+      delay: 0,
+    },
+    {
+      top: "20%",
+      right: "5%",
+      bg: "bg-yellow-300 dark:bg-yellow-600",
+      size: "w-64 h-64",
+      delay: 1,
+    },
+    {
+      bottom: "0%",
+      left: "25%",
+      bg: "bg-blue-300 dark:bg-blue-800",
+      size: "w-80 h-80",
+      delay: 2,
+    },
+  ];
+
   return (
-    <section id="contact" className="py-20">
-      <div className="max-w-7xl w-full mx-auto px-4">
+    <section id="contact" className="relative py-20 overflow-hidden">
+      {/* Fundo animado */}
+      <div className="absolute inset-0 z-0">
+        {floatingCircles.map((circle, index) => (
+          <motion.div
+            key={index}
+            className={`absolute ${circle.size} ${circle.bg} rounded-full mix-blend-multiply filter blur-xl opacity-30`}
+            style={{
+              top: circle.top,
+              left: circle.left,
+              right: circle.right,
+              bottom: circle.bottom,
+            }}
+            animate={{
+              y: ["0%", "60%", "0%"],
+              x: ["0%", "35%", "0%"],
+              rotate: [0, 45, 0],
+            }}
+            transition={{
+              duration: 8,
+              repeat: Infinity,
+              repeatType: "mirror",
+              delay: circle.delay,
+              ease: "easeInOut",
+            }}
+          />
+        ))}
+      </div>
+
+      <div className="relative max-w-7xl w-full mx-auto px-4 z-10">
+        {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -93,13 +145,13 @@ export function ContactSection() {
           <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-600 dark:text-gray-200">
             {t("title")}
           </h2>
-          <div className="w-20 h-1 bg-blue-600 mx-auto mb-8"></div>
+          <div className="w-20 h-1 bg-blue-600 mx-auto mb-8 rounded"></div>
           <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
             {t("subtitle")}
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 gap-y-10">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 gap-y-10 relative z-10">
           {/* Info */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}

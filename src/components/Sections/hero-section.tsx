@@ -20,6 +20,7 @@ export function HeroSection() {
     text: word,
     className: word === "Full" || word === "Stack" ? "highlight" : "",
   }));
+
   const scrollToNextSection = () => {
     const aboutSection = document.getElementById("about");
     if (aboutSection) {
@@ -41,8 +42,8 @@ export function HeroSection() {
     >
       <div className="absolute inset-0 w-full h-full z-0">
         <div className="absolute top-0 -left-4 w-72 h-72 bg-purple-300 dark:bg-purple-700 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob"></div>
-        <div className="absolute top-0 -right-4 w-72 h-72 bg-yellow-300 dark:bg-yellow-600 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-2000"></div>
-        <div className="absolute -bottom-8 left-20 w-72 h-72 bg-blue-300 dark:bg-blue-800 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-4000"></div>
+        <div className="absolute top-0 -right-4 w-72 h-72 bg-yellow-300 dark:bg-yellow-600 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animate-blob-delay-2000"></div>
+        <div className="absolute -bottom-8 left-20 w-72 h-72 bg-blue-300 dark:bg-blue-800 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animate-blob-delay-4000"></div>
       </div>
 
       <div className="container mx-auto px-4 z-10">

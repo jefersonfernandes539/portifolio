@@ -1,10 +1,9 @@
 import { ReactNode } from "react";
-import { NextIntlClientProvider } from "next-intl";
+import IntlProviderWrapper from "./IntlProviderWrapper";
 
 interface LocaleLayoutProps {
   children: ReactNode;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  params: any;
+  params: { locale: string };
 }
 
 export default async function LocaleLayout({
@@ -26,12 +25,8 @@ export default async function LocaleLayout({
   }
 
   return (
-    <html lang={locale}>
-      <body>
-        <NextIntlClientProvider locale={locale} messages={messages}>
-          {children}
-        </NextIntlClientProvider>
-      </body>
-    </html>
+    <IntlProviderWrapper locale={locale} messages={messages}>
+      {children}
+    </IntlProviderWrapper>
   );
 }
