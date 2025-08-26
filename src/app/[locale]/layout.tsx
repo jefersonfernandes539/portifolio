@@ -3,7 +3,8 @@ import IntlProviderWrapper from "./IntlProviderWrapper";
 
 interface LocaleLayoutProps {
   children: ReactNode;
-  params: { locale: string };
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  params: any;
 }
 
 export default async function LocaleLayout({

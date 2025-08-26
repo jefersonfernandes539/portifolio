@@ -105,7 +105,6 @@ export function ContactSection() {
 
   return (
     <section id="contact" className="relative py-20 overflow-hidden">
-      {/* Fundo animado */}
       <div className="absolute inset-0 z-0">
         {floatingCircles.map((circle, index) => (
           <motion.div
@@ -134,7 +133,6 @@ export function ContactSection() {
       </div>
 
       <div className="relative max-w-7xl w-full mx-auto px-4 z-10">
-        {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -152,7 +150,6 @@ export function ContactSection() {
         </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 gap-y-10 relative z-10">
-          {/* Info */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -190,7 +187,6 @@ export function ContactSection() {
             })}
           </motion.div>
 
-          {/* Form */}
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
