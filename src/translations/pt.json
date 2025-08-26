@@ -1,0 +1,239 @@
+{
+  "aboutSection": {
+    "title": "Sobre Mim",
+    "paragraphs": {
+      "p1": "Sou <bold>Desenvolvedor FullStack</bold> com <bold>2 anos de experiência</bold>, especializado em Javascript, Typescript, React, Next.js, C#, .NET e Entity Framework.",
+      "p2": "Atuo no desenvolvimento de aplicações completas, desde a camada de interface até a lógica de negócio e integração com bancos de dados.",
+      "p3": "Já participei de projetos em <bold>empresas privadas</bold> e <bold>iniciativas públicas</bold>, como o <italic>Cartografia da Cultura & Rede Mobilize</italic>, sempre focando em entregar soluções digitais eficientes, escaláveis e com excelente experiência para o usuário.",
+      "p4": "Atualmente, curso o <bold>5º semestre de Análise e Desenvolvimento de Sistemas</bold> e sigo em constante evolução profissional."
+    },
+    "whoAmI": {
+      "title": "Quem sou eu",
+      "paragraphs": {
+        "p1": "Olá! Sou Jeferson Fernandes, um desenvolvedor full stack apaixonado por tecnologia. Minha jornada começou há alguns anos com curiosidade em programação, e desde então venho evoluindo para construir aplicações web modernas e funcionais.",
+        "p2": "Atualmente curso o 5º semestre de Análise e Desenvolvimento de Sistemas e já atuei em projetos que utilizam tecnologias como React, Next.js, TypeScript, .NET, Entity Framework e bancos de dados relacionais.",
+        "p3": "Tenho como foco unir performance, usabilidade e boas práticas de desenvolvimento para entregar soluções que realmente façam diferença para empresas e usuários.",
+        "p4": "Fora do mundo do código, gosto de aprender coisas novas, compartilhar conhecimento e participar de iniciativas que fortalecem a comunidade de tecnologia."
+      },
+      "info": {
+        "name": "Nome",
+        "email": "Email",
+        "location": "Localização",
+        "availability": "Disponibilidade",
+        "availabilityText": "Disponível para projetos"
+      }
+    },
+    "skills": {
+      "title": "Minhas Habilidades",
+      "javascript": "JavaScript/TypeScript",
+      "react": "React & Next.js",
+      "node": "Node.js",
+      "htmlcss": "HTML & CSS",
+      "uiux": "UI/UX Design",
+      "database": "Database Management"
+    },
+    "services": {
+      "title": "Serviços Oferecidos",
+      "web": {
+        "title": "Desenvolvimento Web",
+        "description": "Criação de sites e aplicações web responsivas e de alta performance."
+      },
+      "uiux": {
+        "title": "UI/UX Design",
+        "description": "Design de interfaces intuitivas e experiências de usuário agradáveis."
+      },
+      "backend": {
+        "title": "Backend Development",
+        "description": "Desenvolvimento de APIs robustas e sistemas escaláveis."
+      },
+      "database": {
+        "title": "Database Design",
+        "description": "Modelagem e otimização de bancos de dados para suas aplicações."
+      },
+      "frontend": {
+        "title": "Desenvolvimento Frontend",
+        "description": "Interfaces modernas com React, Next.js e outras tecnologias atuais."
+      },
+      "consulting": {
+        "title": "Consultoria Técnica",
+        "description": "Orientação estratégica para projetos digitais e soluções tecnológicas."
+      }
+    }
+  },
+  "experienceSection": {
+    "title": "Experiência & Educação",
+    "subtitle": "Minha trajetória profissional e acadêmica que me trouxe até aqui.",
+    "work": {
+      "title": "Experiência Profissional",
+      "1": {
+        "role": "Estagiário de Projetos",
+        "company": "Meireles e Freitas Digital Law | Fortaleza, CE",
+        "period": "Outubro/2023 – Janeiro/2024",
+        "description": [
+          "Desenvolvimento de sistema de gestão e geração automatizada de contratos, integrando Next.js, React e .NET.",
+          "Implementação de funcionalidades personalizadas, testes e otimização de processos."
+        ],
+        "skills": ["React", "Next.js", "C#", ".NET"]
+      },
+      "2": {
+        "role": "Desenvolvedor Full Stack",
+        "company": "Almost Hackers | São Paulo, SP",
+        "period": "Fevereiro/2024 – Julho/2025",
+        "description": [
+          "Desenvolvimento completo de aplicações frontend e backend, alinhadas às necessidades dos clientes.",
+          "Frontend: React, Next.js, TypeScript, Zustand, Chakra UI, ShadCN, Bootstrap (interfaces modernas e responsivas).",
+          "Backend: C# .NET, Entity Framework, PostgreSQL, Clean Architecture, autenticação via JWT, integração com APIs externas (WhatsApp, chatbot).",
+          "Projeto destaque: Plataforma de investimentos financeiros multi-moeda (BRL/USD) com conversão em tempo real, gráficos interativos, histórico de aportes e retiradas, automação de saques e painel administrativo (Staff).",
+          "Responsável por modelagem, definição de regras de negócio e desenvolvimento end-to-end."
+        ],
+        "skills": [
+          "React",
+          "Next.js",
+          "TypeScript",
+          "Zustand",
+          "Chakra UI",
+          "ShadCN",
+          "Bootstrap",
+          "C# .NET",
+          "Entity Framework",
+          "PostgreSQL",
+          "JWT"
+        ]
+      },
+      "3": {
+        "role": "Desenvolvedor Full Stack (Freelance PJ)",
+        "company": "Eyna | Projeto Interno / Visão Computacional",
+        "period": "2025",
+        "description": [
+          "Desenvolvimento de Sistema de Gestão de Turnos e Presença multi-tenant.",
+          "Confirmação de turnos com automação via WhatsApp e chamadas telefônicas, registro e rastreamento de respostas.",
+          "Implementação de lógica de substituição de funcionários, auditoria completa de dados e histórico detalhado de turnos.",
+          "Projeto complementar: desenvolvimento de porteiro eletrônico inteligente com automação via N8N."
+        ],
+        "skills": [
+          "React",
+          "Next.js",
+          "TypeScript",
+          "Zustand",
+          "Chakra UI",
+          "ShadCN",
+          "Bootstrap",
+          "Python",
+          "NestJS",
+          "PostgreSQL",
+          "Drizzle ORM",
+          "JWT",
+          "APIs REST",
+          "Webhooks",
+          "N8N"
+        ]
+      },
+      "4": {
+        "role": "Desenvolvedor Full Stack (Freelance PJ)",
+        "company": "Cartografia da Cultura & Rede Mobiliza | Governo do Ceará / Prefeitura de Fortaleza",
+        "period": "2025",
+        "description": [
+          "Desenvolvimento do site institucional com React e Next.js no frontend e backend em C# .NET.",
+          "Integração com Google Forms para captação de dados.",
+          "Criação de plataforma digital inclusiva para mapeamento de mais de 100 organizações culturais.",
+          "Desenvolvimento de API REST para cadastramento de localidades e integração com PostgreSQL.",
+          "Implementação de mapa interativo usando Leaflet API.",
+          "Uso de Motion ReactJS e ShadCN para interface fluida e moderna."
+        ],
+        "skills": [
+          "TypeScript",
+          "JavaScript",
+          "React",
+          "Next.js",
+          "ShadCN",
+          "C# .NET",
+          "PostgreSQL",
+          "API REST",
+          "Leaflet",
+          "Motion ReactJS",
+          "Integração Google Forms"
+        ]
+      }
+    },
+    "education": {
+      "title": "Educação",
+      "1": {
+        "degree": "Graduação em Análise e Desenvolvimento de Sistemas",
+        "institution": "Universidade Uniasselvi",
+        "period": "Em andamento, 5º semestre – Previsão de término: 2026",
+        "description": "Com foco prático, abrange programação, bancos de dados, engenharia de software, redes e segurança da informação, preparando o aluno para atuar no desenvolvimento de soluções tecnológicas para empresas e organizações."
+      }
+    }
+  },
+  "locales": {
+    "en": "Inglês",
+    "pt": "Português"
+  },
+  "hero": {
+    "greeting": "Olá, eu sou",
+    "words": "Desenvolvedor,Full,Stack,Web.",
+    "description": "Transformando ideias em experiências digitais excepcionais. Especializado em desenvolvimento web moderno com React, Next.js e Node.js.",
+    "viewProjects": "Ver Projetos",
+    "downloadCV": "Baixar CV"
+  },
+  "projects": {
+    "title": "Meus Projetos",
+    "subtitle": "Confira alguns dos meus trabalhos recentes. Cada projeto é uma oportunidade de aprendizado e crescimento profissional.",
+    "code": "Código",
+    "demo": "Demo",
+    "viewMore": "Ver mais projetos",
+    "categories": {
+      "all": "Todos",
+      "frontend": "Frontend",
+      "backend": "Backend",
+      "fullstack": "Full Stack",
+      "mobile": "Mobile"
+    },
+    "project1": {
+      "title": "Cartografia da Cultura: OSCs e Iniciativas Culturais de Fortaleza",
+      "description": "O **Cartografia da Cultura** é uma iniciativa que tem como objetivo **mapear, documentar e dar visibilidade** a mais de 100 organizações e coletivos culturais de Fortaleza..."
+    }
+  },
+  "contact": {
+    "title": "Entre em Contato",
+    "subtitle": "Tem um projeto em mente ou quer conversar sobre oportunidades de trabalho? Ficarei feliz em responder suas perguntas.",
+    "email": "Email",
+    "phone": "Telefone",
+    "location": "Localização",
+    "success": "Mensagem enviada com sucesso!",
+    "error": "Erro ao enviar mensagem. Tente novamente.",
+    "form": {
+      "name": "Nome",
+      "namePlaceholder": "Seu nome",
+      "email": "Email",
+      "emailPlaceholder": "seu.email@exemplo.com",
+      "subject": "Assunto",
+      "subjectPlaceholder": "Assunto da mensagem",
+      "message": "Mensagem",
+      "messagePlaceholder": "Sua mensagem aqui...",
+      "send": "Enviar Mensagem",
+      "sending": "Enviando..."
+    }
+  },
+  "footer": {
+    "description": "Desenvolvedor full stack especializado em criar experiências digitais excepcionais.",
+    "quickLinks": "Links Rápidos",
+    "home": "Início",
+    "about": "Sobre",
+    "projects": "Projetos",
+    "experience": "Experiência",
+    "contact": "Contato",
+    "email": "Email",
+    "phone": "Telefone",
+    "location": "Localização",
+    "rightsReserved": "Todos os direitos reservados."
+  },
+  "navbar": {
+    "home": "Início",
+    "about": "Sobre",
+    "projects": "Projetos",
+    "experience": "Experiência",
+    "available": "Disponível",
+    "hire": "Contratar"
+  }
+}

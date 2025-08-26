@@ -15,17 +15,17 @@ import {
 } from "@/ui/card";
 import { Tabs, TabsList, TabsTrigger } from "@/ui/tabs";
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 
 export function ProjectsSection() {
+  const t = useTranslations("projects"); 
   const [activeTab, setActiveTab] = useState("all");
 
   const projects = [
     {
       id: 1,
-      title:
-        "Cartografia da Cultura: OSCs e Iniciativas Culturais de Fortaleza",
-      description:
-        "O **Cartografia da Cultura** é uma iniciativa que tem como objetivo **mapear, documentar e dar visibilidade** a mais de 100 organizações e coletivos culturais de Fortaleza. A proposta busca fortalecer redes de colaboração, valorizar metodologias e práticas culturais e reunir essas experiências em uma **plataforma digital interativa** e em um **livro acessível**, ambos construídos de forma democrática e inclusiva.",
+      title: t("project1.title"),
+      description: t("project1.description"),
       image: "/img1.png",
       tags: [
         "React",
@@ -40,6 +40,7 @@ export function ProjectsSection() {
       githubUrl: "https://github.com/jefersonfernandes539/OscFrontend",
       liveUrl: "https://redemobilize.up.railway.app/",
     },
+    // Adicione mais projetos aqui...
   ];
 
   const filteredProjects =
@@ -48,11 +49,11 @@ export function ProjectsSection() {
       : projects.filter((project) => project.category === activeTab);
 
   const categories = [
-    { value: "all", label: "Todos" },
-    { value: "frontend", label: "Frontend" },
-    { value: "backend", label: "Backend" },
-    { value: "fullstack", label: "Full Stack" },
-    { value: "mobile", label: "Mobile" },
+    { value: "all", label: t("categories.all") },
+    { value: "frontend", label: t("categories.frontend") },
+    { value: "backend", label: t("categories.backend") },
+    { value: "fullstack", label: t("categories.fullstack") },
+    { value: "mobile", label: t("categories.mobile") },
   ];
 
   return (
@@ -66,12 +67,11 @@ export function ProjectsSection() {
           className="text-center mb-16"
         >
           <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-600 dark:text-gray-200">
-            Meus Projetos
+            {t("title")}
           </h2>
           <div className="w-20 h-1 bg-blue-600 dark:bg-blue-400 mx-auto mb-8"></div>
           <p className="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-            Confira alguns dos meus trabalhos recentes. Cada projeto é uma
-            oportunidade de aprendizado e crescimento profissional.
+            {t("subtitle")}
           </p>
         </motion.div>
 
@@ -148,7 +148,7 @@ export function ProjectsSection() {
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      <Github className="mr-2 h-4 w-4" /> Código
+                      <Github className="mr-2 h-4 w-4" /> {t("code")}
                     </a>
                   </Button>
                   <Button size="sm" asChild>
@@ -157,7 +157,7 @@ export function ProjectsSection() {
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      <ExternalLink className="mr-2 h-4 w-4" /> Demo
+                      <ExternalLink className="mr-2 h-4 w-4" /> {t("demo")}
                     </a>
                   </Button>
                 </CardFooter>
@@ -179,7 +179,7 @@ export function ProjectsSection() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              Ver mais projetos <ArrowRight className="ml-2 h-4 w-4" />
+              {t("viewMore")} <ArrowRight className="ml-2 h-4 w-4" />
             </a>
           </Button>
         </motion.div>

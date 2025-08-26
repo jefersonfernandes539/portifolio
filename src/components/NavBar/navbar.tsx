@@ -14,8 +14,11 @@ import {
 import { Button } from "@/ui/button";
 import { Badge } from "@/ui/badge";
 import { Toggle } from "@/components";
+import { useTranslations } from "next-intl";
 
 export default function Navbar() {
+  const t = useTranslations("navbar");
+
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
@@ -27,10 +30,10 @@ export default function Navbar() {
   }, []);
 
   const navItems = [
-    { id: "home", label: "Início", icon: Home },
-    { id: "about", label: "Sobre", icon: User },
-    { id: "projects", label: "Projetos", icon: Code2 },
-    { id: "experience", label: "Experiência", icon: Briefcase },
+    { id: "home", label: t("home"), icon: Home },
+    { id: "about", label: t("about"), icon: User },
+    { id: "projects", label: t("projects"), icon: Code2 },
+    { id: "experience", label: t("experience"), icon: Briefcase },
   ];
 
   const scrollToSection = (sectionId: string) => {
@@ -69,7 +72,7 @@ export default function Navbar() {
                 Jeferson Fernandes
               </span>
               <Badge variant="secondary" className="hidden sm:inline-flex">
-                Disponível
+                {t("available")}
               </Badge>
             </motion.div>
 
@@ -101,8 +104,9 @@ export default function Navbar() {
                 className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700"
               >
                 <ExternalLink className="w-4 h-4 mr-2" />
-                Contratar
+                {t("hire")}
               </Button>
+              <Toggle.Language />
               <Toggle.Color />
             </div>
 
@@ -155,9 +159,9 @@ export default function Navbar() {
                     className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 flex items-center justify-center"
                   >
                     <ExternalLink className="w-4 h-4 mr-2" />
-                    Contratar
+                    {t("hire")}
                   </Button>
-
+                  <Toggle.Language />
                   <Toggle.Color />
                 </div>
               </div>

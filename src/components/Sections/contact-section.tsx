@@ -3,15 +3,18 @@
 import type React from "react";
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Mail, MapPin, Phone, Send } from "lucide-react";
+import { Mail, MapPin, Phone } from "lucide-react";
 import { Button } from "@/ui/button";
 import { Card, CardContent } from "@/ui/card";
 import { Input } from "@/ui/input";
 import { Label } from "@/ui/label";
 import { Textarea } from "@/ui/textarea";
 import emailjs from "emailjs-com";
+import { useTranslations } from "next-intl";
 
 export function ContactSection() {
+  const t = useTranslations("contact");
+
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
@@ -40,17 +43,17 @@ export function ContactSection() {
           email: formData.email,
           title: formData.title,
           message: formData.message,
-          time: new Date().toLocaleString("pt-BR"),
+          time: new Date().toLocaleString(),
         },
         process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!
       );
 
       setFormData({ name: "", email: "", title: "", message: "" });
 
-      alert("Mensagem enviada com sucesso!");
+      alert(t("success"));
     } catch (err) {
       console.error("Erro ao enviar email:", err);
-      alert("Erro ao enviar mensagem. Tente novamente.");
+      alert(t("error"));
     } finally {
       setIsSubmitting(false);
     }
@@ -59,19 +62,19 @@ export function ContactSection() {
   const contactInfo = [
     {
       icon: Mail,
-      title: "Email",
+      title: t("email"),
       value: "fernandesjeferson539@gmail.com",
       link: "mailto:fernandesjeferson539@gmail.com",
     },
     {
       icon: Phone,
-      title: "Telefone",
+      title: t("phone"),
       value: "+55 (85) 99820-2691",
       link: "tel:+5585998202691",
     },
     {
       icon: MapPin,
-      title: "Localização",
+      title: t("location"),
       value: "Fortaleza, CE - Brasil",
       link: "https://www.google.com/maps/place/Fortaleza+-+CE/@-3.793299,-38.6844283,11z",
     },
@@ -88,12 +91,11 @@ export function ContactSection() {
           className="text-center mb-16"
         >
           <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-600 dark:text-gray-200">
-            Entre em Contato
+            {t("title")}
           </h2>
           <div className="w-20 h-1 bg-blue-600 mx-auto mb-8"></div>
           <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-            Tem um projeto em mente ou quer conversar sobre oportunidades de
-            trabalho? Ficarei feliz em responder suas perguntas.
+            {t("subtitle")}
           </p>
         </motion.div>
 
@@ -150,13 +152,13 @@ export function ContactSection() {
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div className="space-y-2">
                       <Label htmlFor="name" className="dark:text-gray-200">
-                        Nome
+                        {t("form.name")}
                       </Label>
                       <Input
                         id="name"
                         name="name"
                         className="w-full"
-                        placeholder="Seu nome"
+                        placeholder={t("form.namePlaceholder")}
                         required
                         value={formData.name}
                         onChange={handleChange}
@@ -164,14 +166,14 @@ export function ContactSection() {
                     </div>
                     <div className="space-y-2">
                       <Label htmlFor="email" className="dark:text-gray-200">
-                        Email
+                        {t("form.email")}
                       </Label>
                       <Input
                         id="email"
                         name="email"
                         type="email"
                         className="w-full"
-                        placeholder="seu.email@exemplo.com"
+                        placeholder={t("form.emailPlaceholder")}
                         required
                         value={formData.email}
                         onChange={handleChange}
@@ -181,13 +183,13 @@ export function ContactSection() {
 
                   <div className="space-y-2">
                     <Label htmlFor="title" className="dark:text-gray-200">
-                      Assunto
+                      {t("form.subject")}
                     </Label>
                     <Input
                       id="title"
                       name="title"
                       className="w-full"
-                      placeholder="Assunto da mensagem"
+                      placeholder={t("form.subjectPlaceholder")}
                       required
                       value={formData.title}
                       onChange={handleChange}
@@ -196,13 +198,13 @@ export function ContactSection() {
 
                   <div className="space-y-2">
                     <Label htmlFor="message" className="dark:text-gray-200">
-                      Mensagem
+                      {t("form.message")}
                     </Label>
                     <Textarea
                       id="message"
                       name="message"
                       className="w-full"
-                      placeholder="Sua mensagem aqui..."
+                      placeholder={t("form.messagePlaceholder")}
                       rows={6}
                       required
                       value={formData.message}
@@ -215,35 +217,7 @@ export function ContactSection() {
                     className="w-full"
                     disabled={isSubmitting}
                   >
-                    {isSubmitting ? (
-                      <>
-                        <svg
-                          className="animate-spin -ml-1 mr-3 h-5 w-5 text-white"
-                          xmlns="http://www.w3.org/2000/svg"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                        >
-                          <circle
-                            className="opacity-25"
-                            cx="12"
-                            cy="12"
-                            r="10"
-                            stroke="currentColor"
-                            strokeWidth="4"
-                          ></circle>
-                          <path
-                            className="opacity-75"
-                            fill="currentColor"
-                            d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                          ></path>
-                        </svg>
-                        Enviando...
-                      </>
-                    ) : (
-                      <>
-                        <Send className="mr-2 h-4 w-4" /> Enviar Mensagem
-                      </>
-                    )}
+                    {isSubmitting ? t("form.sending") : t("form.send")}
                   </Button>
                 </form>
               </CardContent>

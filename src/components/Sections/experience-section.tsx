@@ -10,114 +10,53 @@ import {
   CardTitle,
 } from "@/ui/card";
 import { Badge } from "@/ui/badge";
+import { useTranslations } from "next-intl";
 
 export function ExperienceSection() {
+  const t = useTranslations("experienceSection");
+
   const workExperience = [
     {
       id: 1,
-      role: "Estagiário de Projetos",
-      company: "Meireles e Freitas Digital Law | Fortaleza, CE",
-      period: "Outubro/2023 – Janeiro/2024",
-      description: [
-        "Desenvolvimento de sistema de gestão e geração automatizada de contratos, integrando Next.js, React e .NET.",
-        "Implementação de funcionalidades personalizadas, testes e otimização de processos.",
-      ],
-      skills: ["React", "Next.js", "C#", "DotNet"],
+      role: t("work.1.role"),
+      company: t("work.1.company"),
+      period: t("work.1.period"),
+      description: t.raw("work.1.description"), // array no JSON
+      skills: t.raw("work.1.skills"),
     },
     {
       id: 2,
-      role: "Desenvolvedor Full Stack",
-      company: "Almost Hackers | São Paulo, SP",
-      period: "Fevereiro/2024 – Julho/2025",
-      description: [
-        "Desenvolvimento completo de aplicações frontend e backend, alinhadas às necessidades dos clientes.",
-        "Frontend: React, Next.js, TypeScript, Zustand, Chakra UI, ShadCN, Bootstrap (interfaces modernas e responsivas).",
-        "Backend: C# .NET, Entity Framework, PostgreSQL, Clean Architecture, autenticação via JWT, integração com APIs externas (WhatsApp, chatbot).",
-        "Projeto destaque: Plataforma de investimentos financeiros multi-moeda (BRL/USD) com conversão em tempo real, gráficos interativos, histórico de aportes e retiradas, automação de saques e painel administrativo (Staff).",
-        "Responsável por modelagem, definição de regras de negócio e desenvolvimento end-to-end.",
-      ],
-      skills: [
-        "React",
-        "Next.js",
-        "TypeScript",
-        "Zustand",
-        "Chakra UI",
-        "ShadCN",
-        "Bootstrap",
-        "C# .NET",
-        "Entity Framework",
-        "PostgreSQL",
-        "JWT",
-      ],
+      role: t("work.2.role"),
+      company: t("work.2.company"),
+      period: t("work.2.period"),
+      description: t.raw("work.2.description"),
+      skills: t.raw("work.2.skills"),
     },
     {
       id: 3,
-      role: "Desenvolvedor Full Stack (Freelance PJ)",
-      company: "Eyna | Projeto Interno / Visão Computacional",
-      period: "2025",
-      description: [
-        "Desenvolvimento de Sistema de Gestão de Turnos e Presença multi-tenant.",
-        "Confirmação de turnos com automação via WhatsApp e chamadas telefônicas, registro e rastreamento de respostas.",
-        "Implementação de lógica de substituição de funcionários, auditoria completa de dados e histórico detalhado de turnos.",
-        "Projeto complementar: desenvolvimento de porteiro eletrônico inteligente com automação via N8N.",
-      ],
-      skills: [
-        "React",
-        "Next.js",
-        "TypeScript",
-        "Zustand",
-        "Chakra UI",
-        "ShadCN",
-        "Bootstrap",
-        "Python",
-        "NestJS",
-        "PostgreSQL",
-        "Drizzle ORM",
-        "JWT",
-        "APIs REST",
-        "Webhooks",
-        "N8N",
-      ],
+      role: t("work.3.role"),
+      company: t("work.3.company"),
+      period: t("work.3.period"),
+      description: t.raw("work.3.description"),
+      skills: t.raw("work.3.skills"),
     },
     {
       id: 4,
-      role: "Desenvolvedor Full Stack (Freelance PJ)",
-      company:
-        "Cartografia da Cultura & Rede Mobiliza | Governo do Ceará / Prefeitura de Fortaleza",
-      period: "2025",
-      description: [
-        "Desenvolvimento do site institucional com React e Next.js no frontend e backend em C# .NET.",
-        "Integração com Google Forms para captação de dados.",
-        "Criação de plataforma digital inclusiva para mapeamento de mais de 100 organizações culturais.",
-        "Desenvolvimento de API REST para cadastramento de localidades e integração com PostgreSQL.",
-        "Implementação de mapa interativo usando Leaflet API.",
-        "Uso de Motion ReactJS e ShadCN para interface fluida e moderna.",
-      ],
-      skills: [
-        "TypeScript",
-        "JavaScript",
-        "React",
-        "Next.js",
-        "ShadCN",
-        "C# .NET",
-        "PostgreSQL",
-        "API REST",
-        "Leaflet",
-        "ShadCN",
-        "Motion ReactJS",
-        "Integração Google Forms",
-      ],
+      role: t("work.4.role"),
+      company: t("work.4.company"),
+      period: t("work.4.period"),
+      description: t.raw("work.4.description"),
+      skills: t.raw("work.4.skills"),
     },
   ];
 
   const education = [
     {
       id: 1,
-      degree: "Graduação em Análise e Desenvolvimento de Sistemas",
-      institution: "Universidade Uniasselvi",
-      period: "Em andamento, 5º semestre – Previsão de término: 2026",
-      description:
-        "Com foco prático, abrange programação, bancos de dados, engenharia de software, redes e segurança da informação, preparando o aluno para atuar no desenvolvimento de soluções tecnológicas para empresas e organizações.",
+      degree: t("education.1.degree"),
+      institution: t("education.1.institution"),
+      period: t("education.1.period"),
+      description: t("education.1.description"),
     },
   ];
 
@@ -133,6 +72,7 @@ export function ExperienceSection() {
   return (
     <section id="experience" className="py-20 bg-gray-100 dark:bg-gray-900">
       <div className="container mx-auto px-4">
+        {/* Cabeçalho */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -141,11 +81,11 @@ export function ExperienceSection() {
           className="text-center mb-16"
         >
           <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-600 dark:text-gray-200">
-            Experiência & Educação
+            {t("title")}
           </h2>
           <div className="w-20 h-1 bg-blue-600 dark:bg-blue-400 mx-auto mb-8"></div>
           <p className="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-            Minha trajetória profissional e acadêmica que me trouxe até aqui.
+            {t("subtitle")}
           </p>
         </motion.div>
 
@@ -155,7 +95,7 @@ export function ExperienceSection() {
             <div className="flex items-center mb-8">
               <Briefcase className="h-6 w-6 text-blue-600 dark:text-blue-400 mr-3" />
               <h3 className="text-2xl font-bold text-gray-600 dark:text-gray-200">
-                Experiência Profissional
+                {t("work.title")}
               </h3>
             </div>
             <div className="space-y-6">
@@ -183,13 +123,13 @@ export function ExperienceSection() {
                       </div>
                     </CardHeader>
                     <CardContent className="space-y-2">
-                      {job.description.map((desc, i) => (
+                      {job.description.map((desc: string, i: number) => (
                         <p key={i} className="text-gray-600 dark:text-gray-300">
                           {desc}
                         </p>
                       ))}
                       <div className="flex flex-wrap gap-2 mt-2">
-                        {job.skills.map((skill, i) => (
+                        {job.skills.map((skill: string, i: number) => (
                           <Badge key={i} variant="secondary">
                             {skill}
                           </Badge>
@@ -207,7 +147,7 @@ export function ExperienceSection() {
             <div className="flex items-center mb-8">
               <GraduationCap className="h-6 w-6 text-blue-800 dark:text-blue-400 mr-3" />
               <h3 className="text-2xl font-bold text-gray-600 dark:text-gray-200">
-                Educação
+                {t("education.title")}
               </h3>
             </div>
             <div className="space-y-6">

@@ -1,5 +1,6 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import { motion } from "framer-motion";
 import {
   ArrowRight,
@@ -13,6 +14,12 @@ import { TypewriterEffect } from "@/ui/typewriter-effect";
 import Image from "next/image";
 
 export function HeroSection() {
+  const t = useTranslations("hero");
+  const rawWords = (t("words") || "").split(",").map((w) => w.trim());
+  const words = rawWords.map((word) => ({
+    text: word,
+    className: word === "Full" || word === "Stack" ? "highlight" : "",
+  }));
   const scrollToNextSection = () => {
     const aboutSection = document.getElementById("about");
     if (aboutSection) {
@@ -26,13 +33,6 @@ export function HeroSection() {
       moreProjects.scrollIntoView({ behavior: "smooth" });
     }
   };
-
-  const words = [
-    { text: "Desenvolvedor", className: "text-gray-500 dark:text-gray-300" },
-    { text: "Full", className: "text-blue-500 dark:text-blue-400" },
-    { text: "Stack", className: "text-blue-500 dark:text-blue-400" },
-    { text: "Web.", className: "text-gray-500 dark:text-gray-300" },
-  ];
 
   return (
     <section
@@ -56,10 +56,10 @@ export function HeroSection() {
             <div className="w-24 h-24 rounded-full border-4 border-blue-500 dark:border-blue-400 overflow-hidden mx-auto">
               <Image
                 src="/image.jpeg"
-                alt=""
-                className="w-full h-full object-cover"
+                alt="Foto de Jeferson Fernandes"
                 width={300}
                 height={300}
+                className="w-full h-full object-cover"
               />
             </div>
           </motion.div>
@@ -70,7 +70,7 @@ export function HeroSection() {
             transition={{ duration: 0.5, delay: 0.2 }}
           >
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 text-gray-500 dark:text-gray-200">
-              Olá, eu sou{" "}
+              {t("greeting")}{" "}
               <span className="text-blue-600 dark:text-blue-400">
                 Jeferson Fernandes
               </span>
@@ -95,9 +95,7 @@ export function HeroSection() {
             transition={{ duration: 0.5, delay: 0.6 }}
             className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mb-10"
           >
-            Transformando ideias em experiências digitais excepcionais.
-            Especializado em desenvolvimento web moderno com React, Next.js e
-            Node.js.
+            {t("description")}
           </motion.p>
 
           <motion.div
@@ -111,7 +109,7 @@ export function HeroSection() {
               size="lg"
               className="bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-400"
             >
-              Ver Projetos <ArrowRight className="ml-2 h-4 w-4" />
+              {t("viewProjects")} <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
             <a href="/CVJefersonFernandes.pdf" download>
               <Button
@@ -120,7 +118,7 @@ export function HeroSection() {
                 className="border-blue-600 text-blue-600 hover:bg-blue-50 dark:border-blue-400 dark:text-blue-400 dark:hover:bg-gray-800"
               >
                 <Download className="mr-2 h-4 w-4" />
-                Baixar CV
+                {t("downloadCV")}
               </Button>
             </a>
           </motion.div>
