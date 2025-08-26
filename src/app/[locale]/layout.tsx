@@ -1,19 +1,29 @@
 import { ReactNode } from "react";
 import { NextIntlClientProvider } from "next-intl";
 
+interface LocaleLayoutProps {
+  children: ReactNode;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  params: any;
+}
+
 export default async function LocaleLayout({
   children,
   params,
-}: {
-  children: ReactNode;
-  params: { locale: string };
-}) {
-  const { locale } = params;
+}: LocaleLayoutProps) {
+  const locale = params.locale;
 
-  const messages =
-    locale === "pt"
-      ? (await import("@/translations/pt.json")).default
-      : (await import("@/translations/en.json")).default;
+  let messages;
+  switch (locale) {
+    case "pt":
+      messages = (await import("@/translations/pt.json")).default;
+      break;
+    case "en":
+      messages = (await import("@/translations/en.json")).default;
+      break;
+    default:
+      messages = (await import("@/translations/en.json")).default;
+  }
 
   return (
     <html lang={locale}>
