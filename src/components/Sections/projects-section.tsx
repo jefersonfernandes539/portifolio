@@ -18,7 +18,7 @@ import Image from "next/image";
 import { useTranslations } from "next-intl";
 
 export function ProjectsSection() {
-  const t = useTranslations("projects"); 
+  const t = useTranslations("projects");
   const [activeTab, setActiveTab] = useState("all");
 
   const projects = [
@@ -40,7 +40,6 @@ export function ProjectsSection() {
       githubUrl: "https://github.com/jefersonfernandes539/OscFrontend",
       liveUrl: "https://redemobilize.up.railway.app/",
     },
-    // Adicione mais projetos aqui...
   ];
 
   const filteredProjects =
@@ -81,12 +80,12 @@ export function ProjectsSection() {
           onValueChange={setActiveTab}
           className="mb-12"
         >
-          <TabsList className="mx-auto flex flex-wrap justify-center">
+          <TabsList className="mx-auto flex flex-wrap justify-center gap-2 h-full">
             {categories.map((category) => (
               <TabsTrigger
                 key={category.value}
                 value={category.value}
-                className="px-6"
+                className="px-3 py-2 min-w-[100px] text-center text-sm md:px-6 md:py-3 md:min-w-[120px]"
               >
                 {category.label}
               </TabsTrigger>

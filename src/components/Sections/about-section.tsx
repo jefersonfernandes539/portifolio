@@ -79,7 +79,6 @@ export function AboutSection() {
   return (
     <section id="about" className="py-20 bg-gray-100 dark:bg-gray-900">
       <div className="mx-auto px-4">
-        {/* SOBRE MIM */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -121,9 +120,7 @@ export function AboutSection() {
           </div>
         </motion.div>
 
-        {/* QUEM SOU EU + HABILIDADES */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
-          {/* QUEM SOU EU */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -140,7 +137,6 @@ export function AboutSection() {
               <p>{t("whoAmI.paragraphs.p4")}</p>
             </div>
 
-            {/* INFO */}
             <div className="mt-8 grid grid-cols-2 gap-4">
               <div>
                 <h4 className="font-bold mb-2 text-gray-800 dark:text-gray-100">
@@ -150,14 +146,15 @@ export function AboutSection() {
                   Jeferson Fernandes
                 </p>
               </div>
-              <div>
-                <h4 className="font-bold mb-2 text-gray-800 dark:text-gray-100">
+              <div className="flex flex-col space-y-1 md:space-y-2">
+                <h4 className="font-bold text-gray-800 dark:text-gray-100">
                   {t("whoAmI.info.email")}:
                 </h4>
-                <p className="text-gray-600 dark:text-gray-300">
+                <p className="text-gray-600 dark:text-gray-300 break-all">
                   fernandesjeferson539@gmail.com
                 </p>
               </div>
+
               <div>
                 <h4 className="font-bold mb-2 text-gray-800 dark:text-gray-100">
                   {t("whoAmI.info.location")}:
@@ -177,7 +174,6 @@ export function AboutSection() {
             </div>
           </motion.div>
 
-          {/* HABILIDADES */}
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -203,7 +199,6 @@ export function AboutSection() {
           </motion.div>
         </div>
 
-        {/* SERVIÇOS */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
