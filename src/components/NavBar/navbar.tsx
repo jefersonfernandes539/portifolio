@@ -153,6 +153,7 @@ export default function Navbar() {
                     </motion.button>
                   );
                 })}
+
                 <div className="pt-4 border-t border-gray-200 dark:border-gray-700 flex space-y-3">
                   <Button
                     onClick={() => scrollToSection("contact")}
@@ -161,8 +162,12 @@ export default function Navbar() {
                     <ExternalLink className="w-4 h-4 mr-2" />
                     {t("hire")}
                   </Button>
-                  <Toggle.Language />
-                  <Toggle.Color />
+                  <div className="pr-4 pl-4">
+                    <Toggle.Language />
+                  </div>
+                  <div>
+                    <Toggle.Color />
+                  </div>
                 </div>
               </div>
             </motion.div>
