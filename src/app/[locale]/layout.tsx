@@ -1,13 +1,14 @@
 import { ReactNode } from "react";
 import { NextIntlClientProvider } from "next-intl";
 
-interface Props {
+export default async function LocaleLayout({
+  children,
+  params,
+}: {
   children: ReactNode;
   params: { locale: string };
-}
-
-export default async function LocaleLayout({ children, params }: Props) {
-  const locale = params.locale;
+}) {
+  const { locale } = params;
 
   const messages =
     locale === "pt"
