@@ -192,6 +192,14 @@
     "project1": {
       "title": "Cartografia da Cultura: OSCs e Iniciativas Culturais de Fortaleza",
       "description": "O **Cartografia da Cultura** é uma iniciativa que tem como objetivo **mapear, documentar e dar visibilidade** a mais de 100 organizações e coletivos culturais de Fortaleza..."
+    },
+    "project2": {
+      "title": "Portifólio profissional",
+      "description": "O projeto é uma ideia de portifólio profissional para o psicólogo(a) com agendamento e possibilidade de escala para integração com chatbot."
+    },
+    "project3": {
+      "title": "Backend da Cartografia",
+      "description": "O sistema backend do projeto Cartografia, responsável por armazenar, gerenciar e fornecer dados sobre organizações e iniciativas culturais de Fortaleza. Fornece APIs e processamento de dados para a aplicação de mapeamento frontend."
     }
   },
   "contact": {

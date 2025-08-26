@@ -200,6 +200,14 @@
     "project1": {
       "title": "Mapping Culture: NGOs and Cultural Initiatives in Fortaleza",
       "description": "The **Mapping Culture** initiative aims to **map, document, and give visibility** to over 100 cultural organizations and collectives in Fortaleza. The project seeks to strengthen collaboration networks, highlight cultural methodologies and practices, and gather these experiences in an **interactive digital platform** and an **accessible book**, both built democratically and inclusively."
+    },
+    "project2": {
+      "title": "Professional Portfolio",
+      "description": "The project is a professional portfolio concept for psychologists, featuring appointment scheduling and the potential for scaling with chatbot integration."
+    },
+    "project3": {
+      "title": "Cartography Backend",
+      "description": "The backend system for the Cartography project, responsible for storing, managing, and serving data about cultural organizations and initiatives in Fortaleza. Provides APIs and data processing for the front-end mapping application."
     }
   },
   "contact": {

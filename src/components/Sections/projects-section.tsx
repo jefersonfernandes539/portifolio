@@ -40,6 +40,26 @@ export function ProjectsSection() {
       githubUrl: "https://github.com/jefersonfernandes539/OscFrontend",
       liveUrl: "https://redemobilize.up.railway.app/",
     },
+    {
+      id: 2,
+      title: t("project2.title"),
+      description: t("project2.description"),
+      image: "/project2.png",
+      tags: ["React", "Nextjs", "Typescript", "ShadCN"],
+      category: "frontend",
+      githubUrl: "https://github.com/jefersonfernandes539/portifolio-psicologa",
+      liveUrl: "https://portifoliopsicologa.vercel.app/",
+    },
+    {
+      id: 3,
+      title: t("project3.title"),
+      description: t("project3.description"),
+      image: "/project3.png",
+      tags: ["C#", "Postgresql", "EF ORM"],
+      category: "backend",
+      githubUrl: "https://github.com/jefersonfernandes539/OscBackend",
+      liveUrl: "https://redemobilize-backend.up.railway.app/api/onglocation",
+    },
   ];
 
   const filteredProjects =
