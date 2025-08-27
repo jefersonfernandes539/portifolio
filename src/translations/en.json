@@ -28,6 +28,8 @@
       "javascript": "JavaScript/TypeScript",
       "react": "React & Next.js",
       "node": "Node.js",
+      "c#": "C#",
+      "net": ".NET",
       "htmlcss": "HTML & CSS",
       "uiux": "UI/UX Design",
       "database": "Database Management"
@@ -110,10 +112,12 @@
         "company": "Eyna | Internal Project / Computer Vision",
         "period": "2025",
         "description": [
-          "Development of a multi-tenant Shift and Attendance Management System.",
-          "Shift confirmations with automation via WhatsApp and phone calls, response logging and tracking.",
-          "Implementation of employee substitution logic, full data auditing, and detailed shift history.",
-          "Complementary project: development of an intelligent intercom with automation via N8N."
+          "Development of a multi-tenant Shift and Attendance Management System using React, Next.js, and TypeScript on the frontend.",
+          "Responsive interface built with Zustand for state management and UI libraries such as Chakra UI, ShadCN, and Bootstrap.",
+          "Backend implemented with NestJS, PostgreSQL, and Drizzle ORM, leveraging JWT for multi-tenant authentication.",
+          "Integration through REST APIs and Webhooks for shift confirmations via WhatsApp and automated phone calls.",
+          "Employee substitution logic, full data auditing, and detailed shift history tracking.",
+          "Process automation with N8N and Python for computer vision components in the smart intercom project."
         ],
         "skills": [
           "React",

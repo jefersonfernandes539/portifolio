@@ -26,6 +26,8 @@ export function AboutSection() {
     { name: t("skills.javascript"), progress: 100 },
     { name: t("skills.react"), progress: 100 },
     { name: t("skills.node"), progress: 100 },
+    { name: t("skills.c#"), progress: 100 },
+    { name: t("skills.net"), progress: 100 },
     { name: t("skills.htmlcss"), progress: 100 },
     { name: t("skills.uiux"), progress: 80 },
     { name: t("skills.database"), progress: 90 },

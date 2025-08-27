@@ -21,7 +21,7 @@ export function ExperienceSection() {
       role: t("work.1.role"),
       company: t("work.1.company"),
       period: t("work.1.period"),
-      description: t.raw("work.1.description"), // array no JSON
+      description: t.raw("work.1.description"),
       skills: t.raw("work.1.skills"),
     },
     {
@@ -72,7 +72,7 @@ export function ExperienceSection() {
   return (
     <section id="experience" className="py-20 bg-gray-100 dark:bg-gray-900">
       <div className="container mx-auto px-4">
-        {/* Cabeçalho */}
+
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -90,7 +90,6 @@ export function ExperienceSection() {
         </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          {/* Experiência Profissional */}
           <div>
             <div className="flex items-center mb-8">
               <Briefcase className="h-6 w-6 text-blue-600 dark:text-blue-400 mr-3" />
@@ -142,7 +141,6 @@ export function ExperienceSection() {
             </div>
           </div>
 
-          {/* Educação */}
           <div>
             <div className="flex items-center mb-8">
               <GraduationCap className="h-6 w-6 text-blue-800 dark:text-blue-400 mr-3" />

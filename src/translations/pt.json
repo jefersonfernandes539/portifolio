@@ -28,6 +28,8 @@
       "javascript": "JavaScript/TypeScript",
       "react": "React & Next.js",
       "node": "Node.js",
+      "c#": "C#",
+      "net": ".NET",
       "htmlcss": "HTML & CSS",
       "uiux": "UI/UX Design",
       "database": "Database Management"
@@ -83,7 +85,6 @@
           "Desenvolvimento completo de aplicações frontend e backend, alinhadas às necessidades dos clientes.",
           "Frontend: React, Next.js, TypeScript, Zustand, Chakra UI, ShadCN, Bootstrap (interfaces modernas e responsivas).",
           "Backend: C# .NET, Entity Framework, PostgreSQL, Clean Architecture, autenticação via JWT, integração com APIs externas (WhatsApp, chatbot).",
-          "Projeto destaque: Plataforma de investimentos financeiros multi-moeda (BRL/USD) com conversão em tempo real, gráficos interativos, histórico de aportes e retiradas, automação de saques e painel administrativo (Staff).",
           "Responsável por modelagem, definição de regras de negócio e desenvolvimento end-to-end."
         ],
         "skills": [
@@ -105,10 +106,12 @@
         "company": "Eyna | Projeto Interno / Visão Computacional",
         "period": "2025",
         "description": [
-          "Desenvolvimento de Sistema de Gestão de Turnos e Presença multi-tenant.",
-          "Confirmação de turnos com automação via WhatsApp e chamadas telefônicas, registro e rastreamento de respostas.",
-          "Implementação de lógica de substituição de funcionários, auditoria completa de dados e histórico detalhado de turnos.",
-          "Projeto complementar: desenvolvimento de porteiro eletrônico inteligente com automação via N8N."
+          "Desenvolvimento de Sistema de Gestão de Turnos e Presença multi-tenant com frontend em React, Next.js e TypeScript.",
+          "Interface responsiva construída com Zustand para gerenciamento de estado e UI com Chakra UI, ShadCN e Bootstrap.",
+          "Backend implementado em NestJS com PostgreSQL e Drizzle ORM, utilizando JWT para autenticação multi-tenant.",
+          "Integrações via APIs REST e Webhooks para confirmação de turnos por WhatsApp e chamadas telefônicas.",
+          "Lógica de substituição de funcionários, auditoria completa de dados e histórico detalhado de turnos.",
+          "Automação de fluxos com N8N e uso de Python para componentes de visão computacional no porteiro eletrônico inteligente."
         ],
         "skills": [
           "React",
