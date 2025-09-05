@@ -1,23 +1,16 @@
 "use client";
 
 import { motion } from "framer-motion";
-import {
-  Code,
-  Database,
-  Globe,
-  Lightbulb,
-  Palette,
-  Server,
-} from "lucide-react";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/ui/card";
 import { Progress } from "@/ui/progress";
 import { useTranslations } from "next-intl";
+import {
+  Globe,
+  Palette,
+  Server,
+  Database,
+  Code,
+  Lightbulb,
+} from "lucide-react";
 
 export function AboutSection() {
   const t = useTranslations("aboutSection");
@@ -66,21 +59,34 @@ export function AboutSection() {
     },
   ];
 
-  const fadeInUpVariants = {
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+      },
+    },
+  };
+
+  const itemVariants = {
     hidden: { opacity: 0, y: 20 },
-    visible: (i: number) => ({
+    visible: {
       opacity: 1,
       y: 0,
       transition: {
-        delay: i * 0.1,
         duration: 0.5,
       },
-    }),
+    },
   };
 
   return (
-    <section id="about" className="py-20 bg-gray-100 dark:bg-gray-900">
+    <section
+      id="about"
+      className="py-20 bg-gray-100 dark:bg-gray-900 px-6 md:px-12 lg:px-24"
+    >
       <div className="mx-auto px-4">
+        {/* Intro */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -122,7 +128,9 @@ export function AboutSection() {
           </div>
         </motion.div>
 
+        {/* Who Am I + Skills */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+          {/* Who Am I */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -176,6 +184,7 @@ export function AboutSection() {
             </div>
           </motion.div>
 
+          {/* Skills */}
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -201,42 +210,49 @@ export function AboutSection() {
           </motion.div>
         </div>
 
+        {/* Services */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial="hidden"
+          whileInView="visible"
           viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
+          variants={containerVariants}
           className="mt-20"
         >
-          <h3 className="text-2xl font-bold mb-10 text-center text-gray-800 dark:text-gray-100">
+          <motion.h3
+            variants={itemVariants}
+            className="text-3xl font-bold text-center mb-12 text-gray-800 dark:text-gray-100"
+          >
             {t("services.title")}
-          </h3>
+          </motion.h3>
+
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {services.map((service, index) => {
-              const Icon = service.icon;
+              const IconComponent = service.icon;
               return (
                 <motion.div
                   key={index}
-                  custom={index}
-                  variants={fadeInUpVariants}
-                  initial="hidden"
-                  whileInView="visible"
-                  viewport={{ once: true }}
+                  variants={itemVariants}
+                  whileHover={{
+                    y: -5,
+                    boxShadow: "0 10px 25px rgba(0,0,0,0.1)",
+                  }}
+                  className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer"
                 >
-                  <Card className="h-full hover:shadow-lg transition-shadow bg-white dark:bg-gray-800">
-                    <CardHeader>
-                      <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900 rounded-lg flex items-center justify-center mb-4">
-                        <Icon className="h-6 w-6 text-blue-600 dark:text-blue-400" />
-                      </div>
-                      <CardTitle className="dark:text-gray-100">
-                        {service.title}
-                      </CardTitle>
-                      <CardDescription className="dark:text-gray-300">
-                        {service.description}
-                      </CardDescription>
-                    </CardHeader>
-                    <CardContent></CardContent>
-                  </Card>
+                  <motion.div
+                    whileHover={{ scale: 1.1, rotate: 5 }}
+                    transition={{ type: "spring", stiffness: 300 }}
+                    className="w-12 h-12 bg-blue-100 dark:bg-blue-900 rounded-lg flex items-center justify-center mb-4"
+                  >
+                    <IconComponent className="w-6 h-6 text-blue-600 dark:text-blue-400" />
+                  </motion.div>
+
+                  <h4 className="text-xl font-semibold mb-3 text-gray-800 dark:text-gray-100">
+                    {service.title}
+                  </h4>
+
+                  <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
+                    {service.description}
+                  </p>
                 </motion.div>
               );
             })}

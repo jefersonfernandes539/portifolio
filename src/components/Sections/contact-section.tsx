@@ -104,7 +104,10 @@ export function ContactSection() {
   ];
 
   return (
-    <section id="contact" className="relative py-20 overflow-hidden">
+    <section
+      id="contact"
+      className="relative py-20 overflow-hidden px-6 md:px-12 lg:px-24"
+    >
       <div className="absolute inset-0 z-0">
         {floatingCircles.map((circle, index) => (
           <motion.div
