@@ -197,7 +197,7 @@ export function ProjectsSection() {
         >
           <Button variant="outline" size="lg" asChild>
             <a
-              href="https://github.com"
+              href="https://github.com/jefersonfernandes539"
               target="_blank"
               rel="noopener noreferrer"
             >
