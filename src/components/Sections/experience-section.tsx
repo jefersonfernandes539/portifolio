@@ -1,7 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { Briefcase, GraduationCap } from "lucide-react";
+import { Badge } from "@/ui/badge";
 import {
   Card,
   CardContent,
@@ -9,7 +8,8 @@ import {
   CardHeader,
   CardTitle,
 } from "@/ui/card";
-import { Badge } from "@/ui/badge";
+import { motion } from "framer-motion";
+import { Briefcase, GraduationCap } from "lucide-react";
 import { useTranslations } from "next-intl";
 
 export function ExperienceSection() {
@@ -50,6 +50,15 @@ export function ExperienceSection() {
       period: t("work.4.period"),
       description: t.raw("work.4.description"),
       skills: t.raw("work.4.skills"),
+      type: "work" as const,
+    },
+    {
+      id: 5,
+      role: t("work.5.role"),
+      company: t("work.5.company"),
+      period: t("work.5.period"),
+      description: t.raw("work.5.description"),
+      skills: t.raw("work.5.skills"),
       type: "work" as const,
     },
   ];
@@ -120,7 +129,6 @@ export function ExperienceSection() {
           </p>
         </motion.div>
 
-        {/* Desktop Timeline */}
         <div className="hidden md:block relative max-w-6xl mx-auto">
           <motion.div
             className="absolute left-1/2 transform -translate-x-1/2 w-1 bg-gradient-to-b from-blue-600 to-blue-400 dark:from-blue-400 dark:to-blue-600 rounded-full"
@@ -219,7 +227,6 @@ export function ExperienceSection() {
           </motion.div>
         </div>
 
-        {/* Mobile Timeline */}
         <motion.div
           className="block md:hidden relative max-w-2xl mx-auto"
           variants={containerVariants}

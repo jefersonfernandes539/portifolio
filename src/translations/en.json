@@ -163,6 +163,33 @@
           "Motion ReactJS",
           "Google Forms Integration"
         ]
+      },
+      "5": {
+        "role": "Mid-Level Software Developer I",
+        "company": "Tasken | Fortaleza, CE, Brazil",
+        "period": "October/2025 – Present",
+        "description": [
+          "Responsible for developing automation solutions, system integrations, and maintaining corporate applications, focusing on operational efficiency and process optimization.",
+          "Developed Robotic Process Automation (RPA) solutions using C# and .NET Worker Services to automate data collection and processing, reducing manual effort and increasing productivity.",
+          "Implemented Web Crawling and Web Scraping solutions to integrate external systems and automate previously manual business workflows.",
+          "Maintained and enhanced a legacy ERP system built with Delphi/Object Pascal, delivering stability improvements, critical bug fixes, and business rule adjustments.",
+          "Supported mission-critical business processes, contributing to greater system reliability and operational continuity.",
+          "Collaborated on system integrations and continuous improvement initiatives, reducing rework and increasing internal productivity."
+        ],
+        "skills": [
+          "C#",
+          ".NET",
+          ".NET Worker Services",
+          "RPA",
+          "Web Crawling",
+          "Web Scraping",
+          "Delphi",
+          "Object Pascal",
+          "SQL Server",
+          "System Integration",
+          "REST APIs",
+          "Git"
+        ]
       }
     },
 

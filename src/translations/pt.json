@@ -156,6 +156,33 @@
           "Motion ReactJS",
           "Integração Google Forms"
         ]
+      },
+      "5": {
+        "role": "Desenvolvedor Pleno I",
+        "company": "Tasken | Fortaleza, CE",
+        "period": "Outubro/2025 – Atual",
+        "description": [
+          "Atuação no desenvolvimento de soluções de automação, integrações e manutenção de sistemas corporativos, com foco em otimização operacional e redução de processos manuais.",
+          "Desenvolvimento de robôs de automação (RPA) utilizando C# e .NET Worker Services para coleta e processamento automatizado de dados, reduzindo tarefas manuais e aumentando a eficiência operacional.",
+          "Implementação de soluções de Web Crawling e Web Scraping para integração entre sistemas externos e automação de fluxos de negócio.",
+          "Manutenção e evolução de ERP legado em Delphi/Object Pascal, realizando correções críticas, melhorias de estabilidade e ajustes em regras de negócio.",
+          "Sustentação de processos empresariais críticos, contribuindo para maior confiabilidade e disponibilidade dos sistemas.",
+          "Participação em integrações e melhorias contínuas, reduzindo retrabalho e aumentando a produtividade operacional."
+        ],
+        "skills": [
+          "C#",
+          ".NET",
+          ".NET Worker Services",
+          "RPA",
+          "Web Crawling",
+          "Web Scraping",
+          "Delphi",
+          "Object Pascal",
+          "SQL Server",
+          "Integração de Sistemas",
+          "REST API",
+          "Git"
+        ]
       }
     },
     "education": {
