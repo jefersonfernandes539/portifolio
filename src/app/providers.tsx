@@ -1,35 +1,15 @@
 "use client";
 
-import { Spinner } from "@/components/Spinner/Base";
-import { ThemeProvider } from "@/components/theme-provider";
-import { useLoading } from "@/stores/loading";
 import { Toaster as Sonner } from "@/ui/sonner";
 import { TooltipProvider } from "@/ui/tooltip";
-import { setDefaultOptions } from "date-fns";
-import { ptBR } from "date-fns/locale";
-import { SWRConfig } from "swr";
-
-setDefaultOptions({
-  locale: ptBR,
-});
+import { MotionConfig } from "motion/react";
 
 export function Providers({ children }: { children: React.ReactNode }) {
-  const loading = useLoading((state) => state.loading);
-
   return (
-    <>
-      {loading ? <Spinner /> : null}
-      <SWRConfig value={{ revalidateOnFocus: false, suspense: false }}>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <TooltipProvider>{children}</TooltipProvider>
-          <Sonner />
-        </ThemeProvider>
-      </SWRConfig>
-    </>
+    // Respeita a preferência "reduzir movimento" do sistema
+    <MotionConfig reducedMotion="user">
+      <TooltipProvider>{children}</TooltipProvider>
+      <Sonner />
+    </MotionConfig>
   );
 }

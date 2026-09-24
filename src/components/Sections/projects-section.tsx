@@ -1,210 +1,190 @@
 "use client";
 
 import { useState } from "react";
-import { motion } from "framer-motion";
-import { ExternalLink, Github, ArrowRight } from "lucide-react";
-import { Button } from "@/ui/button";
-import { Badge } from "@/ui/badge";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/ui/card";
-import { Tabs, TabsList, TabsTrigger } from "@/ui/tabs";
+import { AnimatePresence, motion } from "motion/react";
+import { ArrowUpRight, Github } from "lucide-react";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
+import { TiltCard } from "@/components/Effects/tilt-card";
+import { Reveal, SectionHeader } from "@/components/Effects/reveal";
+import { cn } from "@/lib/utils";
+
+type Category = "frontend" | "backend" | "fullstack";
+
+const projects: {
+  id: number;
+  key: string;
+  image: string;
+  tags: string[];
+  category: Category;
+  githubUrl: string;
+  liveUrl: string;
+}[] = [
+  {
+    id: 1,
+    key: "project1",
+    image: "/img1.png",
+    tags: ["React", "Next.js", "TypeScript", "ShadCN", "C#", "PostgreSQL", "EF ORM"],
+    category: "fullstack",
+    githubUrl: "https://github.com/jefersonfernandes539/OscFrontend",
+    liveUrl: "https://redemobilize.up.railway.app/",
+  },
+  {
+    id: 2,
+    key: "project2",
+    image: "/project2.png",
+    tags: ["React", "Next.js", "TypeScript", "ShadCN"],
+    category: "frontend",
+    githubUrl: "https://github.com/jefersonfernandes539/portifolio-psicologa",
+    liveUrl: "https://portifoliopsicologa.vercel.app/",
+  },
+  {
+    id: 3,
+    key: "project3",
+    image: "/project3.png",
+    tags: ["C#", "PostgreSQL", "EF ORM"],
+    category: "backend",
+    githubUrl: "https://github.com/jefersonfernandes539/OscBackend",
+    liveUrl: "https://redemobilize-backend.up.railway.app/api/onglocation",
+  },
+];
+
+// Só mostra filtros que têm pelo menos um projeto
+const categories = [
+  "all",
+  ...(["frontend", "backend", "fullstack"] as const).filter((c) =>
+    projects.some((p) => p.category === c)
+  ),
+];
 
 export function ProjectsSection() {
   const t = useTranslations("projects");
-  const [activeTab, setActiveTab] = useState("all");
+  const tNav = useTranslations("navbar");
+  const tSec = useTranslations("sections");
+  const [active, setActive] = useState<string>("all");
 
-  const projects = [
-    {
-      id: 1,
-      title: t("project1.title"),
-      description: t("project1.description"),
-      image: "/img1.png",
-      tags: [
-        "React",
-        "Nextjs",
-        "Typescript",
-        "ShadCN",
-        "C#",
-        "Postgresql",
-        "EF ORM",
-      ],
-      category: "fullstack",
-      githubUrl: "https://github.com/jefersonfernandes539/OscFrontend",
-      liveUrl: "https://redemobilize.up.railway.app/",
-    },
-    {
-      id: 2,
-      title: t("project2.title"),
-      description: t("project2.description"),
-      image: "/project2.png",
-      tags: ["React", "Nextjs", "Typescript", "ShadCN"],
-      category: "frontend",
-      githubUrl: "https://github.com/jefersonfernandes539/portifolio-psicologa",
-      liveUrl: "https://portifoliopsicologa.vercel.app/",
-    },
-    {
-      id: 3,
-      title: t("project3.title"),
-      description: t("project3.description"),
-      image: "/project3.png",
-      tags: ["C#", "Postgresql", "EF ORM"],
-      category: "backend",
-      githubUrl: "https://github.com/jefersonfernandes539/OscBackend",
-      liveUrl: "https://redemobilize-backend.up.railway.app/api/onglocation",
-    },
-  ];
-
-  const filteredProjects =
-    activeTab === "all"
-      ? projects
-      : projects.filter((project) => project.category === activeTab);
-
-  const categories = [
-    { value: "all", label: t("categories.all") },
-    { value: "frontend", label: t("categories.frontend") },
-    { value: "backend", label: t("categories.backend") },
-    { value: "fullstack", label: t("categories.fullstack") },
-    { value: "mobile", label: t("categories.mobile") },
-  ];
+  const filtered =
+    active === "all" ? projects : projects.filter((p) => p.category === active);
 
   return (
-    <section
-      id="projects"
-      className="py-20 bg-white dark:bg-gray-900 px-6 md:px-12 lg:px-24"
-    >
-      <div className="container mx-auto px-4">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-600 dark:text-gray-200">
-            {t("title")}
-          </h2>
-          <div className="w-20 h-1 bg-blue-600 dark:bg-blue-400 mx-auto mb-8"></div>
-          <p className="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-            {t("subtitle")}
-          </p>
-        </motion.div>
+    <section id="projects" className="py-28 md:py-36">
+      <div className="mx-auto max-w-7xl px-6">
+        <div className="flex flex-col justify-between gap-8 lg:flex-row lg:items-end">
+          <SectionHeader
+            index="02"
+            label={tNav("projects")}
+            title={tSec("projectsHeadline")}
+            subtitle={t("subtitle")}
+          />
+          <Reveal className="mb-14">
+            <div
+              role="tablist"
+              className="inline-flex flex-wrap rounded-full border border-white/15 bg-black/40 p-1"
+            >
+              {categories.map((c) => (
+                <button
+                  key={c}
+                  role="tab"
+                  aria-selected={active === c}
+                  onClick={() => setActive(c)}
+                  className={cn(
+                    "relative rounded-full px-4 py-1.5 font-mono text-xs uppercase tracking-wider transition-colors",
+                    active === c ? "text-black" : "text-neutral-400 hover:text-white"
+                  )}
+                >
+                  {active === c && (
+                    <motion.span
+                      layoutId="project-filter"
+                      className="absolute inset-0 rounded-full bg-white"
+                      transition={{ type: "spring", stiffness: 400, damping: 35 }}
+                    />
+                  )}
+                  <span className="relative">{t(`categories.${c}`)}</span>
+                </button>
+              ))}
+            </div>
+          </Reveal>
+        </div>
 
-        <Tabs
-          defaultValue="all"
-          value={activeTab}
-          onValueChange={setActiveTab}
-          className="mb-12"
-        >
-          <TabsList className="mx-auto flex flex-wrap justify-center gap-2 h-full">
-            {categories.map((category) => (
-              <TabsTrigger
-                key={category.value}
-                value={category.value}
-                className="px-3 py-2 min-w-[100px] text-center text-sm md:px-6 md:py-3 md:min-w-[120px]"
+        <motion.div layout className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+          <AnimatePresence mode="popLayout">
+            {filtered.map((project) => (
+              <motion.article
+                key={project.id}
+                layout
+                initial={{ opacity: 0, y: 24, filter: "blur(8px)" }}
+                animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                exit={{ opacity: 0, scale: 0.96, filter: "blur(8px)" }}
+                transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                className="h-full"
               >
-                {category.label}
-              </TabsTrigger>
-            ))}
-          </TabsList>
-        </Tabs>
+                <TiltCard className="h-full" maxTilt={5}>
+                  <div className="frame group flex h-full flex-col p-3">
+                    <div className="relative aspect-[16/10] overflow-hidden border border-white/10">
+                      <Image
+                        src={project.image}
+                        alt={t(`${project.key}.title`)}
+                        fill
+                        sizes="(min-width: 1024px) 400px, (min-width: 768px) 50vw, 100vw"
+                        className="object-cover object-top opacity-70 grayscale transition-all duration-700 group-hover:scale-105 group-hover:opacity-100 group-hover:grayscale-0"
+                      />
+                      <span className="label-mono absolute left-3 top-3 border border-white/20 bg-black/70 px-2 py-1 backdrop-blur">
+                        <span className="text-amber-glow">
+                          {t(`categories.${project.category}`)}
+                        </span>{" "}
+                        <span className="text-white">
+                          {String(project.id).padStart(2, "0")}
+                        </span>
+                      </span>
+                    </div>
 
-        <motion.div
-          layout
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-        >
-          {filteredProjects.map((project, index) => (
-            <motion.div
-              key={project.id}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              whileHover={{ y: -5 }}
-              className="h-full"
-            >
-              <Card className="overflow-hidden h-full flex flex-col bg-gray-200 dark:bg-gray-800">
-                <div className="relative overflow-hidden">
-                  <Image
-                    src={project.image || "/placeholder.svg"}
-                    alt={project.title}
-                    width={500}
-                    height={192}
-                    className="w-full h-48 object-cover transition-transform duration-300 hover:scale-105"
-                    style={{ width: "100%", height: "12rem" }}
-                    unoptimized={project.image?.startsWith("http")}
-                  />
-                </div>
-                <CardHeader>
-                  <CardTitle className="dark:text-gray-100">
-                    {project.title}
-                  </CardTitle>
-                  <div className="flex flex-wrap gap-2 mt-2">
-                    {project.tags.map((tag, i) => (
-                      <Badge
-                        key={i}
-                        variant="secondary"
-                        className="bg-blue-100 text-blue-700 dark:bg-blue-800 dark:text-blue-300 hover:bg-blue-200 dark:hover:bg-blue-700"
-                      >
-                        {tag}
-                      </Badge>
-                    ))}
+                    <div className="flex flex-1 flex-col px-2 pb-2 pt-5">
+                      <p className="font-mono text-[0.68rem] uppercase tracking-widest text-neutral-500">
+                        {project.tags.join(" · ")}
+                      </p>
+                      <h3 className="mt-2 text-xl font-medium text-white">
+                        {t(`${project.key}.title`)}
+                      </h3>
+                      <p className="mt-3 flex-1 text-sm leading-relaxed text-neutral-400">
+                        {t(`${project.key}.description`)}
+                      </p>
+
+                      <div className="mt-6 flex items-center justify-between border-t border-white/10 pt-4">
+                        <a
+                          href={project.githubUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="label-mono inline-flex items-center gap-2 text-neutral-400 transition-colors hover:text-white"
+                        >
+                          <Github className="h-3.5 w-3.5" /> {t("code")}
+                        </a>
+                        <a
+                          href={project.liveUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="label-mono inline-flex items-center gap-1 text-sky-glow transition-colors hover:text-white"
+                        >
+                          {t("demo")} <ArrowUpRight className="h-3.5 w-3.5" />
+                        </a>
+                      </div>
+                    </div>
                   </div>
-                </CardHeader>
-                <CardContent>
-                  <CardDescription className="text-gray-600 dark:text-gray-300">
-                    {project.description}
-                  </CardDescription>
-                </CardContent>
-                <CardFooter className="flex justify-between mt-auto">
-                  <Button variant="outline" size="sm" asChild>
-                    <a
-                      href={project.githubUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <Github className="mr-2 h-4 w-4" /> {t("code")}
-                    </a>
-                  </Button>
-                  <Button size="sm" asChild>
-                    <a
-                      href={project.liveUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <ExternalLink className="mr-2 h-4 w-4" /> {t("demo")}
-                    </a>
-                  </Button>
-                </CardFooter>
-              </Card>
-            </motion.div>
-          ))}
+                </TiltCard>
+              </motion.article>
+            ))}
+          </AnimatePresence>
         </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          className="text-center mt-12"
-        >
-          <Button variant="outline" size="lg" asChild>
-            <a
-              href="https://github.com/jefersonfernandes539"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              {t("viewMore")} <ArrowRight className="ml-2 h-4 w-4" />
-            </a>
-          </Button>
-        </motion.div>
+        <Reveal className="mt-12 text-center">
+          <a
+            href="https://github.com/jefersonfernandes539"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="label-mono inline-flex items-center gap-2 text-neutral-300 transition-colors hover:text-amber-glow"
+          >
+            {t("viewMore")} <ArrowUpRight className="h-4 w-4" />
+          </a>
+        </Reveal>
       </div>
     </section>
   );

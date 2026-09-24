@@ -1,124 +1,58 @@
 "use client";
 
+import { ArrowUp } from "lucide-react";
 import { useTranslations } from "next-intl";
+import { Reveal } from "@/components/Effects/reveal";
 
 export function Footer() {
   const t = useTranslations("footer");
+  const tSec = useTranslations("sections");
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-gray-900 text-white py-12 px-6 md:px-12 lg:px-24">
-      <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+    <footer className="border-t border-white/10">
+      <div className="mx-auto max-w-7xl px-6 py-20">
+        <Reveal className="flex flex-col justify-between gap-10 md:flex-row md:items-end">
           <div>
-            <div className="flex items-center space-x-2 mb-4">
-              <div className="w-8 h-8 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg flex items-center justify-center">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="20"
-                  height="20"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className="text-white"
-                >
-                  <path d="m18 16 4-4-4-4" />
-                  <path d="m6 8-4 4 4 4" />
-                  <path d="m14.5 4-5 16" />
-                </svg>
-              </div>
-              <span className="text-xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-                Jeferson Fernandes
-              </span>
-            </div>
-            <p className="text-gray-400 mb-4">{t("description")}</p>
-            <div className="flex space-x-4">
-              <a
-                href="https://github.com/jefersonfernandes539"
-                className="text-gray-400 hover:text-white transition-colors"
-              >
-                GitHub
-              </a>
-              <a
-                href="https://www.linkedin.com/in/jeferson-f-04343a111/"
-                className="text-gray-400 hover:text-white transition-colors"
-              >
-                LinkedIn
-              </a>
-            </div>
+            <p className="label-mono text-neutral-500">
+              Jeferson Fernandes / 00—04
+            </p>
+            <p className="mt-4 text-3xl font-medium tracking-tight text-white md:text-4xl">
+              {tSec("footerHeadline")}
+            </p>
+            <p className="mt-3 max-w-md text-neutral-400">{t("description")}</p>
           </div>
 
-          {/* Quick Links */}
-          <div>
-            <h3 className="text-lg font-semibold mb-4">{t("quickLinks")}</h3>
-            <ul className="space-y-2">
-              <li>
-                <a
-                  href="#home"
-                  className="text-gray-400 hover:text-white transition-colors"
-                >
-                  {t("home")}
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#about"
-                  className="text-gray-400 hover:text-white transition-colors"
-                >
-                  {t("about")}
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#projects"
-                  className="text-gray-400 hover:text-white transition-colors"
-                >
-                  {t("projects")}
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#experience"
-                  className="text-gray-400 hover:text-white transition-colors"
-                >
-                  {t("experience")}
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#contact"
-                  className="text-gray-400 hover:text-white transition-colors"
-                >
-                  {t("contact")}
-                </a>
-              </li>
-            </ul>
+          <div className="flex items-center gap-8">
+            <a
+              href="https://github.com/jefersonfernandes539"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="label-mono text-neutral-400 transition-colors hover:text-white"
+            >
+              GitHub
+            </a>
+            <a
+              href="https://www.linkedin.com/in/jeferson-f-04343a111/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="label-mono text-neutral-400 transition-colors hover:text-white"
+            >
+              LinkedIn
+            </a>
+            <a
+              href="#home"
+              className="group inline-flex items-center gap-2 text-white"
+            >
+              {tSec("backToTop")}
+              <ArrowUp className="h-4 w-4 transition-transform group-hover:-translate-y-1" />
+            </a>
           </div>
+        </Reveal>
+      </div>
 
-          <div>
-            <h3 className="text-lg font-semibold mb-4">{t("contact")}</h3>
-            <ul className="space-y-2">
-              <li className="flex items-center text-gray-400">
-                {t("email")}: fernandesJeferson539@gmail.com
-              </li>
-              <li className="flex items-center text-gray-400">
-                {t("phone")}: +55 (85) 99820-2691
-              </li>
-              <li className="flex items-center text-gray-400">
-                {t("location")}: Fortaleza, CE - Brasil
-              </li>
-            </ul>
-          </div>
-        </div>
-
-        <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
-          <p>
-            &copy; {currentYear} Jeferson Fernandes. {t("rightsReserved")}
-          </p>
-        </div>
+      <div className="border-t border-white/10 py-5 text-center font-mono text-xs tracking-wider text-neutral-500">
+        © {currentYear} Jeferson Fernandes · {t("rightsReserved")}
       </div>
     </footer>
   );

@@ -1,7 +1,11 @@
-import { Roboto } from "next/font/google";
+import { Geist, Geist_Mono } from "next/font/google";
 
-export const roboto = Roboto({
+export const geistSans = Geist({
   subsets: ["latin"],
-  weight: ["400", "500", "700"],
-  variable: "--font-roboto", 
+  variable: "--font-geist-sans",
+});
+
+export const geistMono = Geist_Mono({
+  subsets: ["latin"],
+  variable: "--font-geist-mono",
 });

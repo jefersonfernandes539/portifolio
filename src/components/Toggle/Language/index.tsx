@@ -18,6 +18,7 @@ export function Language() {
   const router = useRouter();
   const locale = useLocale();
   const t = useTranslations("locales");
+  const tA11y = useTranslations("a11y");
 
   const handleChangeLocale = (newLocale: SupportedLocale) => {
     if (newLocale !== locale) {
@@ -29,7 +30,11 @@ export function Language() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="outline" size="icon">
+        <Button
+          variant="outline"
+          size="icon"
+          aria-label={tA11y("changeLanguage")}
+        >
           <Languages className="h-[1.2rem] w-[1.2rem]" />
         </Button>
       </DropdownMenuTrigger>

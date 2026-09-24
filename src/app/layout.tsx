@@ -1,21 +1,10 @@
 import "./globals.css";
-import { Providers } from "./providers";
 
-export const metadata = {
-  title: "Jeferson Fernandes",
-  description: "Portfólio profissional",
-};
-
+// O <html> fica em [locale]/layout.tsx para que o atributo lang acompanhe o idioma.
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  return (
-    <html lang="pt">
-      <body>
-        <Providers>{children}</Providers>
-      </body>
-    </html>
-  );
+  return children;
 }

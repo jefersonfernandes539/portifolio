@@ -2,10 +2,10 @@
   "aboutSection": {
     "title": "Sobre Mim",
     "paragraphs": {
-      "p1": "Sou <bold>Desenvolvedor FullStack</bold> com <bold>2 anos de experiência</bold>, especializado em Javascript, Typescript, React, Next.js, C#, .NET e Entity Framework.",
-      "p2": "Atuo no desenvolvimento de aplicações completas, desde a camada de interface até a lógica de negócio e integração com bancos de dados.",
-      "p3": "Já participei de projetos em <bold>empresas privadas</bold> e <bold>iniciativas públicas</bold>, como o <italic>Cartografia da Cultura & Rede Mobilize</italic>, sempre focando em entregar soluções digitais eficientes, escaláveis e com excelente experiência para o usuário.",
-      "p4": "Atualmente, curso o <bold>5º semestre de Análise e Desenvolvimento de Sistemas</bold> e sigo em constante evolução profissional."
+      "p1": "Sou <bold>Desenvolvedor Full Stack Pleno</bold> com <bold>+3 anos de experiência</bold> em aplicações web escaláveis, automações corporativas e sistemas multi-tenant.",
+      "p2": "Atuo de ponta a ponta — do levantamento de requisitos à arquitetura, desenvolvimento e entrega final — com React, Next.js, TypeScript, Node.js/NestJS, C# .NET e PostgreSQL.",
+      "p3": "Já liderei tecnicamente o desenvolvimento completo de uma <bold>plataforma financeira multi-moeda (BRL/USD)</bold> e de uma plataforma de mapeamento cultural para o <bold>Governo do Ceará</bold>, o <italic>Cartografia da Cultura & Rede Mobilize</italic>.",
+      "p4": "Sou graduado em <bold>Análise e Desenvolvimento de Sistemas</bold> pela UNIASSELVI e gosto de atuar com autonomia técnica em times enxutos, participando de decisões de arquitetura e integrações externas."
     },
     "whoAmI": {
       "title": "Quem sou eu",
@@ -25,14 +25,12 @@
     },
     "skills": {
       "title": "Minhas Habilidades",
-      "javascript": "JavaScript/TypeScript",
-      "react": "React & Next.js",
-      "node": "Node.js",
-      "c#": "C#",
-      "net": ".NET",
-      "htmlcss": "HTML & CSS",
-      "uiux": "UI/UX Design",
-      "database": "Database Management"
+      "frontend": "Front-End",
+      "backend": "Back-End",
+      "database": "Banco de Dados",
+      "mobile": "Mobile",
+      "automation": "Automação & Integrações",
+      "devops": "DevOps & Ferramentas"
     },
     "services": {
       "title": "Serviços Oferecidos",
@@ -66,133 +64,130 @@
     "title": "Experiência & Educação",
     "subtitle": "Minha trajetória profissional e acadêmica que me trouxe até aqui.",
     "work": {
-      "title": "Experiência Profissional",
       "1": {
         "role": "Estagiário de Projetos",
-        "company": "Meireles e Freitas Digital Law | Fortaleza, CE",
-        "period": "Outubro/2023 – Janeiro/2024",
+        "company": "MF Digital Law | Fortaleza, CE",
+        "period": "Out/2023 – Jan/2024",
         "description": [
-          "Desenvolvimento de sistema de gestão e geração automatizada de contratos, integrando Next.js, React e .NET.",
-          "Implementação de funcionalidades personalizadas, testes e otimização de processos."
+          "Desenvolvi um sistema de gestão e geração automatizada de contratos personalizados em 3 meses, utilizando React, Next.js e .NET.",
+          "Atuei em melhorias e otimizações de funcionalidades existentes, aumentando a eficiência do fluxo de geração de contratos."
         ],
-        "skills": ["React", "Next.js", "C#", ".NET"]
+        "skills": [
+          "React",
+          "Next.js",
+          "JavaScript",
+          "C# .NET"
+        ]
       },
       "2": {
         "role": "Desenvolvedor Full Stack",
-        "company": "Almost Hackers | São Paulo, SP",
-        "period": "Fevereiro/2024 – Julho/2025",
+        "company": "AlmostHackers | São Paulo, SP (Remoto)",
+        "period": "Fev/2024 – Jul/2025",
         "description": [
-          "Desenvolvimento completo de aplicações frontend e backend, alinhadas às necessidades dos clientes.",
-          "Frontend: React, Next.js, TypeScript, Zustand, Chakra UI, ShadCN, Bootstrap (interfaces modernas e responsivas).",
-          "Backend: C# .NET, Entity Framework, PostgreSQL, Clean Architecture, autenticação via JWT, integração com APIs externas (WhatsApp, chatbot).",
-          "Responsável por modelagem, definição de regras de negócio e desenvolvimento end-to-end."
+          "Atuação end-to-end em múltiplos projetos simultâneos, com destaque para a liderança técnica de uma plataforma financeira multi-moeda (BRL/USD).",
+          "Liderei tecnicamente o desenvolvimento completo da plataforma — arquitetura, backend, frontend e painel administrativo — do levantamento de requisitos até a entrega em produção.",
+          "Estruturei o backend seguindo Clean Architecture, separando as camadas de domínio, aplicação e infraestrutura para facilitar manutenção e testes.",
+          "Implementei autenticação JWT e integrações com APIs externas de conversão monetária em tempo real, garantindo consistência entre saldos em BRL e USD.",
+          "Desenvolvi dashboards administrativos com automação do fluxo de saques, reduzindo a intervenção manual da equipe operacional na conferência de transações.",
+          "Para outros clientes, desenvolvi automações via WhatsApp, webhooks e chatbots, e atuei diretamente no levantamento de regras de negócio e na definição técnica das soluções."
         ],
         "skills": [
           "React",
           "Next.js",
           "TypeScript",
+          "C#",
+          ".NET",
+          "PostgreSQL",
+          "Entity Framework",
+          "JWT",
+          "APIs REST",
+          "Webhooks",
           "Zustand",
           "Chakra UI",
-          "ShadCN",
-          "Bootstrap",
-          "C# .NET",
-          "Entity Framework",
-          "PostgreSQL",
-          "JWT"
+          "ShadCN"
         ]
       },
       "3": {
-        "role": "Desenvolvedor Full Stack (Freelance PJ)",
-        "company": "Eyna | Projeto Interno / Visão Computacional",
-        "period": "2025",
+        "role": "Desenvolvedor Full Stack",
+        "company": "Eyna | Cliente particular",
+        "period": "2024 – 2025",
         "description": [
-          "Desenvolvimento de Sistema de Gestão de Turnos e Presença multi-tenant com frontend em React, Next.js e TypeScript.",
-          "Interface responsiva construída com Zustand para gerenciamento de estado e UI com Chakra UI, ShadCN e Bootstrap.",
-          "Backend implementado em NestJS com PostgreSQL e Drizzle ORM, utilizando JWT para autenticação multi-tenant.",
-          "Integrações via APIs REST e Webhooks para confirmação de turnos por WhatsApp e chamadas telefônicas.",
-          "Lógica de substituição de funcionários, auditoria completa de dados e histórico detalhado de turnos.",
-          "Automação de fluxos com N8N e uso de Python para componentes de visão computacional no porteiro eletrônico inteligente."
+          "Responsável pela arquitetura e desenvolvimento de um sistema multi-tenant de gestão operacional, do zero ao deploy.",
+          "Desenvolvi um sistema de gestão de turnos e presença com arquitetura multi-tenant, garantindo isolamento de dados e escalabilidade entre múltiplos clientes na mesma base.",
+          "Implementei automações via WhatsApp e chamadas telefônicas para confirmação de turnos, reduzindo o esforço operacional manual das equipes de RH dos clientes.",
+          "Estruturei auditoria completa com rastreamento do histórico de operações, aumentando a confiabilidade dos dados em cenários de disputa ou erro operacional.",
+          "Modelei um banco relacional complexo em PostgreSQL com Drizzle ORM, com relacionamentos avançados e controle granular de permissões por tenant.",
+          "Desenvolvi integrações e automações via N8N, reduzindo etapas manuais em processos administrativos recorrentes."
         ],
         "skills": [
           "React",
           "Next.js",
           "TypeScript",
-          "Zustand",
-          "Chakra UI",
-          "ShadCN",
-          "Bootstrap",
-          "Python",
           "NestJS",
+          "C# .NET",
           "PostgreSQL",
           "Drizzle ORM",
           "JWT",
           "APIs REST",
-          "Webhooks",
-          "N8N"
+          "N8N",
+          "WhatsApp"
         ]
       },
       "4": {
-        "role": "Desenvolvedor Full Stack (Freelance PJ)",
+        "role": "Desenvolvedor Full Stack",
         "company": "Cartografia da Cultura & Rede Mobilize | Governo do Ceará / Prefeitura de Fortaleza",
         "period": "2025",
         "description": [
-          "Desenvolvimento do site institucional com React e Next.js no frontend e backend em C# .NET.",
-          "Integração com Google Forms para captação de dados.",
-          "Criação de plataforma digital inclusiva para mapeamento de mais de 100 organizações culturais.",
-          "Desenvolvimento de API REST para cadastramento de localidades e integração com PostgreSQL.",
-          "Implementação de mapa interativo usando Leaflet API.",
-          "Uso de Motion ReactJS e ShadCN para interface fluida e moderna."
+          "Projeto público de mapeamento cultural, com foco em acessibilidade e inclusão digital para organizações culturais do estado.",
+          "Desenvolvi o frontend em React e Next.js priorizando acessibilidade e responsividade, atendendo às diretrizes de inclusão digital do projeto.",
+          "Criei APIs REST em C# .NET para gerenciamento de localidades, com integração direta ao PostgreSQL para consultas geográficas.",
+          "Implementei um mapa interativo com Leaflet para visualização dinâmica das organizações culturais mapeadas.",
+          "Contribuí para a digitalização de mais de 100 organizações culturais, ampliando o acesso público à informação cultural do estado.",
+          "Integrei formulários e fluxos automatizados de captação de dados, facilitando a atualização contínua da plataforma pela equipe do governo."
         ],
         "skills": [
-          "TypeScript",
-          "JavaScript",
           "React",
           "Next.js",
-          "ShadCN",
-          "C# .NET",
+          "TypeScript",
+          "C#",
+          ".NET",
           "PostgreSQL",
-          "API REST",
           "Leaflet",
-          "Motion ReactJS",
-          "Integração Google Forms"
+          "ShadCN",
+          "Motion"
         ]
       },
       "5": {
         "role": "Desenvolvedor Pleno I",
         "company": "Tasken | Fortaleza, CE",
-        "period": "Outubro/2025 – Atual",
+        "period": "Out/2025 – Atual",
         "description": [
-          "Atuação no desenvolvimento de soluções de automação, integrações e manutenção de sistemas corporativos, com foco em otimização operacional e redução de processos manuais.",
-          "Desenvolvimento de robôs de automação (RPA) utilizando C# e .NET Worker Services para coleta e processamento automatizado de dados, reduzindo tarefas manuais e aumentando a eficiência operacional.",
-          "Implementação de soluções de Web Crawling e Web Scraping para integração entre sistemas externos e automação de fluxos de negócio.",
-          "Manutenção e evolução de ERP legado em Delphi/Object Pascal, realizando correções críticas, melhorias de estabilidade e ajustes em regras de negócio.",
-          "Sustentação de processos empresariais críticos, contribuindo para maior confiabilidade e disponibilidade dos sistemas.",
-          "Participação em integrações e melhorias contínuas, reduzindo retrabalho e aumentando a produtividade operacional."
+          "Atuação em automação de processos e manutenção de sistemas corporativos críticos, com foco em substituir tarefas manuais por robôs e integrações automatizadas.",
+          "Desenvolvi robôs de RPA em C# e .NET Worker Services para coleta e processamento automatizado de dados, eliminando tarefas manuais recorrentes na operação.",
+          "Implementei soluções de web crawling e scraping para integração entre sistemas externos, automatizando fluxos antes 100% manuais.",
+          "Atuei na manutenção e evolução de ERP legado em Delphi/Object Pascal, com foco em estabilidade, correções críticas e ajustes de regras de negócio em produção.",
+          "Participei da sustentação de processos empresariais críticos, contribuindo diretamente para a confiabilidade operacional dos sistemas da empresa."
         ],
         "skills": [
           "C#",
-          ".NET",
           ".NET Worker Services",
           "RPA",
           "Web Crawling",
-          "Web Scraping",
           "Delphi",
           "Object Pascal",
-          "SQL Server",
-          "Integração de Sistemas",
-          "REST API",
-          "Git"
+          "SQL Server"
         ]
-      }
+      },
+      "title": "Experiência Profissional"
     },
     "education": {
-      "title": "Educação",
       "1": {
         "degree": "Graduação em Análise e Desenvolvimento de Sistemas",
-        "institution": "Universidade Uniasselvi",
-        "period": "Em andamento, 5º semestre – Previsão de término: 2026",
-        "description": "Com foco prático, abrange programação, bancos de dados, engenharia de software, redes e segurança da informação, preparando o aluno para atuar no desenvolvimento de soluções tecnológicas para empresas e organizações."
-      }
+        "institution": "UNIASSELVI",
+        "period": "2021 – 2024",
+        "description": "Formação com foco prático em programação, bancos de dados, engenharia de software, redes e segurança da informação. Certificações complementares: JavaScript e TypeScript do básico ao avançado (Udemy, 2025) e Entity Framework Core 8 + Minimal API (Udemy, 2023)."
+      },
+      "title": "Educação"
     }
   },
   "locales": {
@@ -200,9 +195,11 @@
     "pt": "Português"
   },
   "hero": {
+    "role": "Desenvolvedor Full Stack Pleno",
+    "explore": "Explorar",
     "greeting": "Olá, eu sou",
     "words": "Desenvolvedor,Full,Stack,Web.",
-    "description": "Transformando ideias em experiências digitais excepcionais. Especializado em desenvolvimento web moderno com React, Next.js e Node.js.",
+    "description": "Aplicações web escaláveis, automações e sistemas multi-tenant — de ponta a ponta, do requisito ao deploy.",
     "viewProjects": "Ver Projetos",
     "downloadCV": "Baixar CV"
   },
@@ -267,11 +264,39 @@
     "rightsReserved": "Todos os direitos reservados."
   },
   "navbar": {
+    "contact": "Contato",
     "home": "Início",
     "about": "Sobre",
     "projects": "Projetos",
     "experience": "Experiência",
     "available": "Disponível",
     "hire": "Contratar"
+  },
+  "a11y": {
+    "github": "GitHub de Jeferson Fernandes",
+    "linkedin": "LinkedIn de Jeferson Fernandes",
+    "openMenu": "Abrir menu",
+    "closeMenu": "Fechar menu",
+    "changeLanguage": "Mudar idioma",
+    "scrollDown": "Rolar para a próxima seção",
+    "photoAlt": "Foto de Jeferson Fernandes"
+  },
+  "metadata": {
+    "title": "Jeferson Fernandes | Desenvolvedor Full Stack",
+    "description": "Portfólio de Jeferson Fernandes, desenvolvedor Full Stack especializado em React, Next.js, TypeScript, C# e .NET."
+  },
+  "sections": {
+    "aboutHeadline": "Código que vira experiência.",
+    "stackLabel": "Stack",
+    "stackHeadline": "Ferramentas do dia a dia.",
+    "servicesLabel": "Serviços",
+    "projectsHeadline": "Coisas que construí.",
+    "experienceHeadline": "A trajetória até aqui.",
+    "contactHeadline": "Vamos construir algo juntos.",
+    "work": "Trabalho",
+    "education": "Formação",
+    "footerHeadline": "Obrigado pela visita.",
+    "backToTop": "Topo",
+    "menu": "Menu"
   }
 }

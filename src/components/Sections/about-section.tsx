@@ -1,7 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { Progress } from "@/ui/progress";
+import Image from "next/image";
 import { useTranslations } from "next-intl";
 import {
   Globe,
@@ -11,253 +10,199 @@ import {
   Code,
   Lightbulb,
 } from "lucide-react";
+import { TiltCard } from "@/components/Effects/tilt-card";
+import { Reveal, SectionHeader } from "@/components/Effects/reveal";
+
+const richTags = {
+  bold: (chunks: React.ReactNode) => (
+    <span className="font-medium text-white">{chunks}</span>
+  ),
+  italic: (chunks: React.ReactNode) => (
+    <span className="italic text-sky-glow">{chunks}</span>
+  ),
+};
+
+// Mesmas categorias do currículo
+const stack = [
+  {
+    key: "frontend",
+    items: ["React", "Next.js", "TypeScript", "JavaScript", "Chakra UI", "ShadCN", "HTML5", "CSS3"],
+  },
+  {
+    key: "backend",
+    items: ["Node.js", "NestJS", "C# .NET", "Entity Framework", "APIs REST", "JWT", "Multi-tenant"],
+  },
+  {
+    key: "database",
+    items: ["PostgreSQL", "SQL Server", "Drizzle ORM", "Entity Framework"],
+  },
+  {
+    key: "mobile",
+    items: ["React Native", "Kotlin", "Jetpack Compose", "Room", "StateFlow"],
+  },
+  {
+    key: "automation",
+    items: ["RPA", "N8N", "WhatsApp", "Webhooks", "Twilio", "Web Crawling"],
+  },
+  {
+    key: "devops",
+    items: ["Git", "GitHub", "Docker", "Jenkins", "Azure", "CI/CD", "Postman", "Firebase"],
+  },
+] as const;
+
+const services = [
+  { key: "web", icon: Globe },
+  { key: "frontend", icon: Code },
+  { key: "backend", icon: Server },
+  { key: "database", icon: Database },
+  { key: "uiux", icon: Palette },
+  { key: "consulting", icon: Lightbulb },
+] as const;
 
 export function AboutSection() {
   const t = useTranslations("aboutSection");
+  const tNav = useTranslations("navbar");
+  const tSec = useTranslations("sections");
+  const tA11y = useTranslations("a11y");
 
-  const skills = [
-    { name: t("skills.javascript"), progress: 100 },
-    { name: t("skills.react"), progress: 100 },
-    { name: t("skills.node"), progress: 100 },
-    { name: t("skills.c#"), progress: 100 },
-    { name: t("skills.net"), progress: 100 },
-    { name: t("skills.htmlcss"), progress: 100 },
-    { name: t("skills.uiux"), progress: 80 },
-    { name: t("skills.database"), progress: 90 },
-  ];
-
-  const services = [
+  const info = [
+    { label: t("whoAmI.info.name"), value: "Jeferson Fernandes" },
+    { label: t("whoAmI.info.email"), value: "fernandesjeferson539@gmail.com" },
+    { label: t("whoAmI.info.location"), value: "Fortaleza, CE" },
     {
-      icon: Globe,
-      title: t("services.web.title"),
-      description: t("services.web.description"),
-    },
-    {
-      icon: Palette,
-      title: t("services.uiux.title"),
-      description: t("services.uiux.description"),
-    },
-    {
-      icon: Server,
-      title: t("services.backend.title"),
-      description: t("services.backend.description"),
-    },
-    {
-      icon: Database,
-      title: t("services.database.title"),
-      description: t("services.database.description"),
-    },
-    {
-      icon: Code,
-      title: t("services.frontend.title"),
-      description: t("services.frontend.description"),
-    },
-    {
-      icon: Lightbulb,
-      title: t("services.consulting.title"),
-      description: t("services.consulting.description"),
+      label: t("whoAmI.info.availability"),
+      value: t("whoAmI.info.availabilityText"),
+      highlight: true,
     },
   ];
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.5,
-      },
-    },
-  };
 
   return (
-    <section
-      id="about"
-      className="py-20 bg-gray-100 dark:bg-gray-900 px-6 md:px-12 lg:px-24"
-    >
-      <div className="mx-auto px-4">
-        {/* Intro */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="text-center mb-16"
-        >
-          <div className="max-w-3xl mx-auto px-6">
-            <h2 className="text-3xl font-bold text-center text-gray-800 dark:text-gray-100 mb-8">
-              {t("title")}
-            </h2>
+    <section id="about" className="py-28 md:py-36">
+      <div className="mx-auto max-w-7xl px-6">
+        <SectionHeader
+          index="01"
+          label={tNav("about")}
+          title={tSec("aboutHeadline")}
+        />
 
-            <div className="space-y-6 text-gray-600 dark:text-gray-300 text-lg leading-relaxed text-justify">
-              <p>
-                {t.rich("paragraphs.p1", {
-                  bold: (chunks) => (
-                    <span className="font-semibold">{chunks}</span>
-                  ),
-                  italic: (chunks) => <span className="italic">{chunks}</span>,
-                })}
-              </p>
-              <p>{t("paragraphs.p2")}</p>
-              <p>
-                {t.rich("paragraphs.p3", {
-                  bold: (chunks) => (
-                    <span className="font-semibold">{chunks}</span>
-                  ),
-                  italic: (chunks) => <span className="italic">{chunks}</span>,
-                })}
-              </p>
-              <p>
-                {t.rich("paragraphs.p4", {
-                  bold: (chunks) => (
-                    <span className="font-semibold">{chunks}</span>
-                  ),
-                })}
-              </p>
-            </div>
-          </div>
-        </motion.div>
-
-        {/* Who Am I + Skills */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
-          {/* Who Am I */}
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-          >
-            <h3 className="text-2xl font-bold mb-6 text-gray-800 dark:text-gray-100">
-              {t("whoAmI.title")}
-            </h3>
-            <div className="space-y-4 text-gray-600 dark:text-gray-300">
-              <p>{t("whoAmI.paragraphs.p1")}</p>
-              <p>{t("whoAmI.paragraphs.p2")}</p>
-              <p>{t("whoAmI.paragraphs.p3")}</p>
-              <p>{t("whoAmI.paragraphs.p4")}</p>
-            </div>
-
-            <div className="mt-8 grid grid-cols-2 gap-4">
-              <div>
-                <h4 className="font-bold mb-2 text-gray-800 dark:text-gray-100">
-                  {t("whoAmI.info.name")}:
-                </h4>
-                <p className="text-gray-600 dark:text-gray-300">
-                  Jeferson Fernandes
-                </p>
+        <div className="grid gap-12 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-20">
+          {/* Foto + ficha técnica */}
+          <Reveal>
+            <div className="frame p-3">
+              <div className="relative aspect-[4/5] overflow-hidden">
+                <Image
+                  src="/foto-jeferson.jpeg"
+                  alt={tA11y("photoAlt")}
+                  fill
+                  sizes="(min-width: 1024px) 400px, 100vw"
+                  className="object-cover object-[50%_30%] grayscale transition-all duration-700 hover:grayscale-0 hover:scale-105"
+                />
+                <span className="label-mono absolute left-3 top-3 border border-white/20 bg-black/60 px-2 py-1 text-amber-glow backdrop-blur">
+                  ID · 01
+                </span>
               </div>
-              <div className="flex flex-col space-y-1 md:space-y-2">
-                <h4 className="font-bold text-gray-800 dark:text-gray-100">
-                  {t("whoAmI.info.email")}:
-                </h4>
-                <p className="text-gray-600 dark:text-gray-300 break-all">
-                  fernandesjeferson539@gmail.com
-                </p>
-              </div>
-
-              <div>
-                <h4 className="font-bold mb-2 text-gray-800 dark:text-gray-100">
-                  {t("whoAmI.info.location")}:
-                </h4>
-                <p className="text-gray-600 dark:text-gray-300">
-                  Fortaleza, Ceará
-                </p>
-              </div>
-              <div>
-                <h4 className="font-bold mb-2 text-gray-800 dark:text-gray-100">
-                  {t("whoAmI.info.availability")}:
-                </h4>
-                <p className="text-green-600 font-medium">
-                  {t("whoAmI.info.availabilityText")}
-                </p>
-              </div>
-            </div>
-          </motion.div>
-
-          {/* Skills */}
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-          >
-            <h3 className="text-2xl font-bold mb-6 text-gray-800 dark:text-gray-100">
-              {t("skills.title")}
-            </h3>
-            <div className="space-y-6">
-              {skills.map((skill, index) => (
-                <div key={index} className="space-y-2">
-                  <div className="flex justify-between">
-                    <span className="font-medium">{skill.name}</span>
-                    <span className="text-blue-600 dark:text-blue-400">
-                      {skill.progress}%
-                    </span>
+              <dl className="mt-3 divide-y divide-white/10 border-t border-white/10">
+                {info.map((item) => (
+                  <div
+                    key={item.label}
+                    className="flex items-baseline justify-between gap-4 py-3"
+                  >
+                    <dt className="label-mono text-neutral-500">{item.label}</dt>
+                    <dd
+                      className={
+                        item.highlight
+                          ? "text-right text-sm text-emerald-400"
+                          : "break-all text-right text-sm text-neutral-200"
+                      }
+                    >
+                      {item.value}
+                    </dd>
                   </div>
-                  <Progress value={skill.progress} className="h-2" />
-                </div>
-              ))}
+                ))}
+              </dl>
             </div>
-          </motion.div>
+          </Reveal>
+
+          {/* Texto */}
+          <div className="space-y-6 text-lg leading-relaxed text-neutral-400">
+            <Reveal>
+              <p>{t.rich("paragraphs.p1", richTags)}</p>
+            </Reveal>
+            <Reveal delay={0.05}>
+              <p>{t("paragraphs.p2")}</p>
+            </Reveal>
+            <Reveal delay={0.1}>
+              <p>{t.rich("paragraphs.p3", richTags)}</p>
+            </Reveal>
+            <Reveal delay={0.15}>
+              <p>{t.rich("paragraphs.p4", richTags)}</p>
+            </Reveal>
+            <Reveal delay={0.2}>
+              <p>{t("whoAmI.paragraphs.p3")}</p>
+            </Reveal>
+          </div>
         </div>
 
-        {/* Services */}
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          variants={containerVariants}
-          className="mt-20"
-        >
-          <motion.h3
-            variants={itemVariants}
-            className="text-3xl font-bold text-center mb-12 text-gray-800 dark:text-gray-100"
-          >
-            {t("services.title")}
-          </motion.h3>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {services.map((service, index) => {
-              const IconComponent = service.icon;
-              return (
-                <motion.div
-                  key={index}
-                  variants={itemVariants}
-                  whileHover={{
-                    y: -5,
-                    boxShadow: "0 10px 25px rgba(0,0,0,0.1)",
-                  }}
-                  className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer"
+        {/* Índice da stack */}
+        <div className="mt-32 grid gap-12 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-20">
+          <SectionHeader
+            index="01.1"
+            label={tSec("stackLabel")}
+            title={tSec("stackHeadline")}
+            className="mb-0"
+          />
+          <Reveal>
+            <ul className="grid grid-cols-2 border-l border-t border-white/10">
+              {stack.map(({ key, items }, i) => (
+                <li
+                  key={key}
+                  className="group relative border-b border-r border-white/10 bg-black/40 p-6 transition-colors hover:bg-white/[0.03]"
                 >
-                  <motion.div
-                    whileHover={{ scale: 1.1, rotate: 5 }}
-                    transition={{ type: "spring", stiffness: 300 }}
-                    className="w-12 h-12 bg-blue-100 dark:bg-blue-900 rounded-lg flex items-center justify-center mb-4"
-                  >
-                    <IconComponent className="w-6 h-6 text-blue-600 dark:text-blue-400" />
-                  </motion.div>
-
-                  <h4 className="text-xl font-semibold mb-3 text-gray-800 dark:text-gray-100">
-                    {service.title}
-                  </h4>
-
-                  <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
-                    {service.description}
+                  <span className="font-mono text-xs text-neutral-500">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <p className="mt-4 font-medium text-amber-glow">
+                    {t(`skills.${key}`)}
                   </p>
-                </motion.div>
-              );
-            })}
+                  <p className="mt-2 font-mono text-xs leading-relaxed text-neutral-400 transition-colors group-hover:text-neutral-200">
+                    {items.join(" · ")}
+                  </p>
+                </li>
+              ))}
+            </ul>
+          </Reveal>
+        </div>
+
+        {/* Serviços */}
+        <div className="mt-32">
+          <SectionHeader
+            index="01.2"
+            label={tSec("servicesLabel")}
+            title={t("services.title")}
+          />
+          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+            {services.map(({ key, icon: Icon }, i) => (
+              <Reveal key={key} delay={i * 0.06} className="h-full">
+                <TiltCard className="h-full" maxTilt={5}>
+                  <div className="frame h-full p-6">
+                    <div className="flex items-center justify-between">
+                      <span className="label-mono text-amber-glow">
+                        {tSec("servicesLabel")} {String(i + 1).padStart(2, "0")}
+                      </span>
+                      <Icon className="h-5 w-5 text-sky-glow" />
+                    </div>
+                    <h3 className="mt-10 text-xl font-medium text-white">
+                      {t(`services.${key}.title`)}
+                    </h3>
+                    <p className="mt-3 text-sm leading-relaxed text-neutral-400">
+                      {t(`services.${key}.description`)}
+                    </p>
+                  </div>
+                </TiltCard>
+              </Reveal>
+            ))}
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );
