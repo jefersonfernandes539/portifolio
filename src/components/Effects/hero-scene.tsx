@@ -109,9 +109,13 @@ function Nebula({ width, dot, animate }: { width: number; dot: Texture; animate:
     return { positions, colors };
   }, [width]);
 
-  useFrame(({ clock }, delta) => {
+  useFrame(({ clock }) => {
     const t = animate ? clock.elapsedTime : 99;
-    if (group.current) group.current.rotation.y += delta * 0.03;
+    // Só balança: girar sem parar traria partículas para perto da câmera
+    if (group.current) {
+      group.current.rotation.y = Math.sin(clock.elapsedTime * 0.08) * 0.12;
+      group.current.rotation.z = Math.sin(clock.elapsedTime * 0.05) * 0.03;
+    }
     // Surge depois do cometa e perde força quando o nome se forma
     if (material.current) {
       material.current.opacity =
