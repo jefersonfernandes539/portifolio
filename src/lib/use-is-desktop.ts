@@ -3,8 +3,7 @@
 import { useEffect, useState } from "react";
 
 /**
- * true em telas grandes com mouse. Os efeitos WebGL e o cursor customizado
- * só rodam nesse caso: no celular não há hover e economiza bateria.
+ * true em telas grandes com mouse. O cursor customizado só aparece nesse caso.
  */
 export function useIsDesktop() {
   const [isDesktop, setIsDesktop] = useState(false);
@@ -20,4 +19,30 @@ export function useIsDesktop() {
   }, []);
 
   return isDesktop;
+}
+
+/**
+ * Capacidade gráfica do aparelho.
+ * - webgl: null até checar no navegador, depois true/false
+ * - lite: celulares e tablets, que recebem menos partículas
+ */
+export function useGraphics() {
+  const [state, setState] = useState<{ webgl: boolean | null; lite: boolean }>(
+    { webgl: null, lite: false }
+  );
+
+  useEffect(() => {
+    let webgl = false;
+    try {
+      const canvas = document.createElement("canvas");
+      webgl = !!(canvas.getContext("webgl2") || canvas.getContext("webgl"));
+    } catch {
+      webgl = false;
+    }
+    const lite =
+      window.innerWidth < 1024 || window.matchMedia("(pointer: coarse)").matches;
+    setState({ webgl, lite });
+  }, []);
+
+  return state;
 }

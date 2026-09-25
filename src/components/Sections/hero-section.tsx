@@ -4,7 +4,7 @@ import { useTranslations } from "next-intl";
 import { motion } from "motion/react";
 import { ArrowDown, ArrowUpRight, Download, Github, Linkedin } from "lucide-react";
 import dynamic from "next/dynamic";
-import { useIsDesktop } from "@/lib/use-is-desktop";
+import { useGraphics } from "@/lib/use-is-desktop";
 
 // three.js só é baixado no navegador, depois do conteúdo principal
 const HeroScene = dynamic(() => import("@/components/Effects/hero-scene"), {
@@ -16,7 +16,7 @@ const ease = [0.22, 1, 0.36, 1] as const;
 export function HeroSection() {
   const t = useTranslations("hero");
   const tA11y = useTranslations("a11y");
-  const isDesktop = useIsDesktop();
+  const { webgl, lite } = useGraphics();
 
   const scrollTo = (id: string) =>
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
@@ -48,12 +48,12 @@ export function HeroSection() {
         </p>
       </motion.div>
 
-      {/* Nome: partículas no desktop, texto no celular */}
-      <div className="relative flex flex-1 items-center justify-center">
-        {isDesktop && <HeroScene />}
+      {/* Nome em partículas; texto comum só se não houver WebGL */}
+      <div className="relative flex min-h-[300px] flex-1 items-center justify-center">
+        {webgl && <HeroScene lite={lite} />}
         <h1
           className={
-            isDesktop
+            webgl !== false
               ? "sr-only"
               : "relative z-10 px-6 text-center text-5xl font-light tracking-[0.15em] text-white sm:text-6xl"
           }

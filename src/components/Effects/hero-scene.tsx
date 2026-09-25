@@ -47,7 +47,7 @@ function gaussian() {
 }
 
 /** Desenha o texto num canvas 2D e devolve as posições dos pixels preenchidos. */
-function sampleText(worldWidth: number, fontFamily: string) {
+function sampleText(worldWidth: number, fontFamily: string, step: number) {
   const canvas = document.createElement("canvas");
   const ctx = canvas.getContext("2d")!;
   const setup = () => {
@@ -70,12 +70,12 @@ function sampleText(worldWidth: number, fontFamily: string) {
   const { data } = ctx.getImageData(0, 0, canvas.width, canvas.height);
   const scale = worldWidth / textWidth;
   const points: number[] = [];
-  for (let y = 0; y < canvas.height; y += SAMPLE_STEP) {
-    for (let x = 0; x < canvas.width; x += SAMPLE_STEP) {
+  for (let y = 0; y < canvas.height; y += step) {
+    for (let x = 0; x < canvas.width; x += step) {
       if (data[(y * canvas.width + x) * 4 + 3] > 100) {
         points.push(
-          (x - canvas.width / 2 + (Math.random() - 0.5) * SAMPLE_STEP) * scale,
-          -(y - canvas.height / 2 + (Math.random() - 0.5) * SAMPLE_STEP) * scale,
+          (x - canvas.width / 2 + (Math.random() - 0.5) * step) * scale,
+          -(y - canvas.height / 2 + (Math.random() - 0.5) * step) * scale,
           (Math.random() - 0.5) * 0.1
         );
       }
@@ -89,13 +89,22 @@ const smoothstep = (a: number, b: number, x: number) => {
   return t * t * (3 - 2 * t);
 };
 
-/** Nebulosa colorida: um disco achatado visto de lado, girando devagar. */
-function Nebula({ width, dot, animate }: { width: number; dot: Texture; animate: boolean }) {
+/** Nebulosa colorida: um disco achatado visto de lado, balançando devagar. */
+function Nebula({
+  width,
+  dot,
+  animate,
+  count,
+}: {
+  width: number;
+  dot: Texture;
+  animate: boolean;
+  count: number;
+}) {
   const group = useRef<Group>(null);
   const material = useRef<PointsMaterial>(null);
 
   const { positions, colors } = useMemo(() => {
-    const count = 7000;
     const positions = new Float32Array(count * 3);
     const colors = new Float32Array(count * 3);
     const c = new Color();
@@ -107,7 +116,7 @@ function Nebula({ width, dot, animate }: { width: number; dot: Texture; animate:
       colors.set([c.r, c.g, c.b], i * 3);
     }
     return { positions, colors };
-  }, [width]);
+  }, [width, count]);
 
   useFrame(({ clock }) => {
     const t = animate ? clock.elapsedTime : 99;
@@ -247,6 +256,7 @@ function Wordmark({
   nebulaWidth,
   dot,
   animate,
+  step,
 }: {
   pointer: React.RefObject<Pointer>;
   fontFamily: string;
@@ -254,12 +264,13 @@ function Wordmark({
   nebulaWidth: number;
   dot: Texture;
   animate: boolean;
+  step: number;
 }) {
   const points = useRef<Points>(null);
   const viewport = useThree((s) => s.viewport);
 
   const { targets, positions, velocities, colors } = useMemo(() => {
-    const targets = sampleText(width, fontFamily);
+    const targets = sampleText(width, fontFamily, step);
     const count = targets.length / 3;
     const positions = new Float32Array(targets.length);
     const colors = new Float32Array(targets.length);
@@ -278,7 +289,7 @@ function Wordmark({
       velocities: new Float32Array(targets.length),
       colors,
     };
-  }, [width, nebulaWidth, fontFamily, animate]);
+  }, [width, nebulaWidth, fontFamily, animate, step]);
 
   useFrame((state, delta) => {
     if (!points.current) return;
@@ -367,15 +378,23 @@ function Scene({
   pointer,
   fontFamily,
   animate,
+  lite,
 }: {
   pointer: React.RefObject<Pointer>;
   fontFamily: string;
   animate: boolean;
+  lite: boolean;
 }) {
   const viewport = useThree((s) => s.viewport);
   const width = Math.min(viewport.width * 0.82, 13);
-  // Nome em duas linhas: limitado pela altura para não encostar nos textos
-  const wordWidth = Math.min(viewport.width * 0.45, viewport.height * 1.7, 8);
+  // Nome em duas linhas: em tela estreita (celular) ocupa quase toda a largura;
+  // em tela larga fica limitado pela altura para não encostar nos textos
+  const aspect = viewport.width / viewport.height;
+  const wordWidth = Math.min(
+    viewport.width * (aspect < 1.4 ? 0.88 : 0.45),
+    viewport.height * 1.7,
+    8
+  );
   const dot = useMemo(() => makeDotTexture(0.45), []);
   const soft = useMemo(() => makeDotTexture(0.05), []);
 
@@ -383,7 +402,12 @@ function Scene({
     <>
       {animate && <Comet width={width} />}
       <Bokeh width={width} soft={soft} />
-      <Nebula width={width} dot={dot} animate={animate} />
+      <Nebula
+        width={width}
+        dot={dot}
+        animate={animate}
+        count={lite ? 3000 : 7000}
+      />
       <Wordmark
         pointer={pointer}
         fontFamily={fontFamily}
@@ -391,12 +415,13 @@ function Scene({
         nebulaWidth={width}
         dot={dot}
         animate={animate}
+        step={lite ? 3 : SAMPLE_STEP}
       />
     </>
   );
 }
 
-export default function HeroScene() {
+export default function HeroScene({ lite = false }: { lite?: boolean }) {
   const container = useRef<HTMLDivElement>(null);
   const inView = useInView(container);
   const pointer = useRef<Pointer>({ x: 0, y: 0, active: false });
@@ -418,13 +443,18 @@ export default function HeroScene() {
       active: true,
     };
   };
+  const release = () => (pointer.current.active = false);
 
   return (
     <div
       ref={container}
-      className="absolute inset-0"
+      // pan-y: arrastar na horizontal mexe nas partículas, na vertical rola a página
+      className="absolute inset-0 touch-pan-y"
+      onPointerDown={handleMove}
       onPointerMove={handleMove}
-      onPointerLeave={() => (pointer.current.active = false)}
+      onPointerLeave={release}
+      onPointerUp={(e) => e.pointerType !== "mouse" && release()}
+      onPointerCancel={release}
       aria-hidden
     >
       {fontFamily && (
@@ -434,7 +464,12 @@ export default function HeroScene() {
           frameloop={inView && !reducedMotion ? "always" : "demand"}
           gl={{ antialias: true, alpha: true }}
         >
-          <Scene pointer={pointer} fontFamily={fontFamily} animate={!reducedMotion} />
+          <Scene
+            pointer={pointer}
+            fontFamily={fontFamily}
+            animate={!reducedMotion}
+            lite={lite}
+          />
         </Canvas>
       )}
     </div>

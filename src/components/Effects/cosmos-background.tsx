@@ -90,7 +90,7 @@ function Rig() {
   return null;
 }
 
-export default function CosmosBackground() {
+export default function CosmosBackground({ lite = false }: { lite?: boolean }) {
   const reducedMotion = useReducedMotion();
 
   return (
@@ -102,7 +102,11 @@ export default function CosmosBackground() {
         gl={{ antialias: false, alpha: true, powerPreference: "low-power" }}
       >
         {LAYERS.map((layer, i) => (
-          <Layer key={i} {...layer} />
+          <Layer
+            key={i}
+            {...layer}
+            count={lite ? Math.round(layer.count * 0.45) : layer.count}
+          />
         ))}
         <Rig />
       </Canvas>

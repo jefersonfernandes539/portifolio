@@ -9,7 +9,7 @@ import { ContactSection } from "@/components/Sections/contact-section";
 import { ExperienceSection } from "@/components/Sections/experience-section";
 import { HeroSection } from "@/components/Sections/hero-section";
 import { ProjectsSection } from "@/components/Sections/projects-section";
-import { useIsDesktop } from "@/lib/use-is-desktop";
+import { useGraphics, useIsDesktop } from "@/lib/use-is-desktop";
 
 const CosmosBackground = dynamic(
   () => import("@/components/Effects/cosmos-background"),
@@ -18,18 +18,16 @@ const CosmosBackground = dynamic(
 
 export default function Home() {
   const isDesktop = useIsDesktop();
+  const { webgl, lite } = useGraphics();
 
   return (
     <div className="relative min-h-screen">
-      {/* Fundo cósmico: WebGL no desktop, estrelas em CSS no celular */}
-      {isDesktop ? (
-        <>
-          <CosmosBackground />
-          <CustomCursor />
-        </>
-      ) : (
+      {/* Fundo cósmico em WebGL; estrelas em CSS só se o aparelho não suportar */}
+      {webgl === true && <CosmosBackground lite={lite} />}
+      {webgl === false && (
         <div className="fixed inset-0 -z-10 bg-stars opacity-60" aria-hidden />
       )}
+      {isDesktop && <CustomCursor />}
 
       <Navbar />
       <main>
